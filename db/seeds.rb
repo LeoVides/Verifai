@@ -60,7 +60,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'very-high',
+  fact_score: 'Very-high',
   political_bias: 'center',
   source_media: 'Reuters',
   user_input: 'The UN reports that global hunger has decreased by 15% over the past decade.',
@@ -71,7 +71,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'low',
+  fact_score: 'Low',
   political_bias: 'far-left',
   source_media: 'The Intercept',
   user_input: 'Capitalism has been the single biggest contributor to global inequality.',
@@ -82,7 +82,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'mixed',
+  fact_score: 'Mixed',
   political_bias: 'right-leaning',
   source_media: 'The Wall Street Journal',
   user_input: 'Tax cuts for corporations have led to job growth in all states.',
@@ -93,7 +93,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'very-low',
+  fact_score: 'Very-low',
   political_bias: 'far-right',
   source_media: 'Infowars',
   user_input: 'Climate change is a myth created by China to destabilize the West.',
@@ -104,7 +104,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'high',
+  fact_score: 'High',
   political_bias: 'left',
   source_media: 'The Guardian',
   user_input: 'Wind energy now accounts for 20% of Europe’s power supply.',
@@ -115,7 +115,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'mixed',
+  fact_score: 'Mixed',
   political_bias: 'right',
   source_media: 'Fox News',
   user_input: 'Immigration is the main reason for rising unemployment in the US.',
@@ -126,7 +126,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'very-high',
+  fact_score: 'Very-high',
   political_bias: 'neutral',
   source_media: 'Associated Press',
   user_input: 'NASA’s Artemis program aims to land astronauts on the moon by 2025.',
@@ -137,7 +137,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'very-low',
+  fact_score: 'Very-low',
   political_bias: 'left-leaning',
   source_media: 'MSNBC',
   user_input: 'The US military budget could singlehandedly end world poverty.',
@@ -148,7 +148,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'high',
+  fact_score: 'High',
   political_bias: 'right-leaning',
   source_media: 'The Daily Caller',
   user_input: 'Several states report economic growth after rolling back business regulations.',

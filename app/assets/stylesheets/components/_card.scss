@@ -1,0 +1,42 @@
+.card-saved {
+  padding: 16px;
+  margin: 8px;
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #d1d9e0;
+  display: block;
+  border-radius: 8px;
+}
+
+.row-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.card-saved h1 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d1d9e0;
+}
+
+.card-saved h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.card-saved p {
+  font-size: 14px;
+  color: #59636e;
+  margin-bottom: 0px;
+}
+
+.card-saved .tag {
+  font-size: 14px;
+  color: #262626;
+  background-color: #F6F8FA;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
