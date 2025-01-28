@@ -1,4 +1,9 @@
 class ResultsController < ApplicationController
+
+  def history
+    @results = current_user.results
+  end
+  
   def search
     @result = Result.new
   end

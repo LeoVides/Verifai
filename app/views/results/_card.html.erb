@@ -1,0 +1,14 @@
+<div class="card-saved">
+  <h1><%= result.title %></h1>
+  <div class="row-card">
+    <h2>Fact score</h2>
+    <p class="tag"><%= result.fact_score %></p>
+  </div>
+  <p><%= result.fact_score_confidence* 100 %>% confidence</p>
+
+  <div class="row-card">
+    <h2>Political bias</h2>
+    <p class="tag"><%= result.political_bias  %></p>
+  </div>
+  <p><%= result.political_bias %> with <%= result.political_bias_confidence* 100 %>% confidence</p>
+</div>

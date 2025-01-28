@@ -1,0 +1,20 @@
+<div class="container">
+
+  <h1>Search history</h1>
+
+  <!-- Display search history as cards -->
+  <div class="row">
+    <% if @results.any? %>
+      <% @results.each do |result| %>
+      <div class="col col-6 col-md-4 col-lg-3">
+        <%= render "results/card", result: result %>
+      </div>
+      <% end %>
+    <% else %>
+      <p>You haven't searched anything yet 🔎</p>
+    <% end %>
+  </div>
+
+
+
+</div>

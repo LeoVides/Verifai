@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "/results/history", to: "results#history", as: "history"
+
   get "results", to: "results#search"
   post "results", to: "results#create"
 end
