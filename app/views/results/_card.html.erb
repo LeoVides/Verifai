@@ -2,8 +2,16 @@
   <h1><%= result.title %></h1>
   <div class="row-card">
     <h2>Fact score</h2>
-    <p class="tag"><%= result.fact_score %></p>
+
+    <!-- Check if fact_score  is nil -->
+    <% if result.fact_score.nil? %>
+      <p class="tag">n/a</p>
+    <% else %>
+      <p class="tag"><%= result.fact_score %></p>
+    <% end %>
   </div>
+
+  <!-- Check if fact_score_confidence of fact_score  is nil -->
   <% if result.fact_score_confidence.nil? %>
     <p>Not enough data to determine confidence</p>
   <% else %>
@@ -12,8 +20,16 @@
 
   <div class="row-card">
     <h2>Political bias</h2>
-    <p class="tag"><%= result.political_bias  %></p>
+
+    <!-- Check if fact_score  is nil -->
+    <% if result.political_bias.nil? %>
+      <p class="tag">n/a</p>
+    <% else %>
+      <p class="tag"><%= result.political_bias  %></p>
+    <% end %>
   </div>
+
+  <!-- Check if fact_score_confidence of political_bias is nil -->
   <% if result.fact_score_confidence.nil? %>
     <p>Not enough data to determine confidence</p>
   <% else %>
