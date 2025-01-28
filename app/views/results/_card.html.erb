@@ -4,11 +4,20 @@
     <h2>Fact score</h2>
     <p class="tag"><%= result.fact_score %></p>
   </div>
-  <p><%= result.fact_score_confidence* 100 %>% confidence</p>
+  <% if result.fact_score_confidence.nil? %>
+    <p>Not enough data to determine confidence</p>
+  <% else %>
+    <p><%= result.fact_score_confidence * 100 %>% confidence</p>
+  <% end %>
 
   <div class="row-card">
     <h2>Political bias</h2>
     <p class="tag"><%= result.political_bias  %></p>
   </div>
-  <p><%= result.political_bias %> with <%= result.political_bias_confidence* 100 %>% confidence</p>
+  <% if result.fact_score_confidence.nil? %>
+    <p>Not enough data to determine confidence</p>
+  <% else %>
+    <p><%= result.political_bias %> with <%= result.political_bias_confidence * 100 %>% confidence</p>
+  <% end %>
+
 </div>
