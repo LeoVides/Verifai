@@ -1,0 +1,10 @@
+<h1>Search</h1>
+<div data-controller="result">
+  <div data-result-target = "fullResult" class="d-none">
+    <h2>Result</h2>
+  </div>
+  <%= simple_form_for(@result, data: { result_target: "form", action: "submit->result#compute" }) do |f| %>
+    <%= f.input :user_input, label: false, placeholder: "Search for a result" %>
+    <%= f.button :submit, "Search" %>
+  <% end %>
+</div>
