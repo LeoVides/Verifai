@@ -67,7 +67,7 @@ Result.create(
   political_bias_confidence: 0.8,
   fact_score_confidence: 0.95,
   title: 'Global hunger declines by 15% in 10 years',
-  user_id: User.last.id
+  user_id: User.first.id
 )
 
 Result.create(
@@ -78,7 +78,7 @@ Result.create(
   political_bias_confidence: 0.95,
   fact_score_confidence: 0.4,
   title: 'Capitalism and global inequality',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -89,7 +89,7 @@ Result.create(
   political_bias_confidence: 0.85,
   fact_score_confidence: 0.65,
   title: 'Corporate tax cuts and job growth',
-  user_id: User.last.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -100,7 +100,7 @@ Result.create(
   political_bias_confidence: 0.9,
   fact_score_confidence: 0.2,
   title: 'Climate change conspiracy theories',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -111,7 +111,7 @@ Result.create(
   political_bias_confidence: 0.8,
   fact_score_confidence: 0.85,
   title: 'Wind energy contribution in Europe',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -122,7 +122,7 @@ Result.create(
   political_bias_confidence: 0.9,
   fact_score_confidence: 0.5,
   title: 'Immigration and unemployment rates',
-  user_id: User.last.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -133,7 +133,7 @@ Result.create(
   political_bias_confidence: 0.7,
   fact_score_confidence: 0.95,
   title: 'NASA Artemis program plans',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -144,7 +144,7 @@ Result.create(
   political_bias_confidence: 0.8,
   fact_score_confidence: 0.2,
   title: 'Military budget and world poverty',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
 
 Result.create(
@@ -155,5 +155,5 @@ Result.create(
   political_bias_confidence: 0.85,
   fact_score_confidence: 0.8,
   title: 'Economic growth and deregulation',
-  user_id: User.first.id
+  user_id: rand(1..5)
 )
