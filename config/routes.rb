@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   get "results", to: "results#search"
   post "results", to: "results#create"
+
+  get "results/hot_topics", to: "results#hot_topics"
 end

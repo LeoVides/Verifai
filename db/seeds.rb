@@ -157,3 +157,36 @@ Result.create(
   title: 'Economic growth and deregulation',
   user_id: rand(1..5)
 )
+
+Result.create(
+  fact_score: 'high',
+  political_bias: 'right-leaning',
+  source_media: 'The Daily Caller',
+  user_input: 'Several states report economic growth after rolling back business regulations.',
+  political_bias_confidence: 0.85,
+  fact_score_confidence: 0.8,
+  title: 'Economic growth and deregulation',
+  user_id: User.last.id
+)
+
+Result.create(
+  fact_score: 'high',
+  political_bias: 'right-leaning',
+  source_media: 'The Daily Caller',
+  user_input: 'Multiple states report economic expansion following the easing of business regulations.',
+  political_bias_confidence: 0.85,
+  fact_score_confidence: 0.8,
+  title: 'Economic growth and deregulation',
+  user_id: User.last.id
+)
+
+Result.create(
+  fact_score: 'high',
+  political_bias: 'right-leaning',
+  source_media: 'The Daily Caller',
+  user_input: 'The US military budget alone has the potential to eradicate global poverty.',
+  political_bias_confidence: 0.85,
+  fact_score_confidence: 0.8,
+  title: 'Economic growth and deregulation',
+  user_id: User.last.id
+)
