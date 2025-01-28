@@ -1,3 +1,6 @@
+require 'tf-idf-similarity'
+require 'matrix'
+
 class ResultsController < ApplicationController
   def search
     @result = Result.new
@@ -12,6 +15,39 @@ class ResultsController < ApplicationController
     else
       render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def hot_topics
+    @results = Result.all
+
+    @user_inputs = @results.map { |result| result.user_input}
+
+    corpus = @user_inputs.map { |text| TfIdfSimilarity::Document.new(text) }
+    model = TfIdfSimilarity::TfIdfModel.new(corpus)
+
+    # Get the similarity matrix
+    similarity_matrix = model.similarity_matrix
+    # Define similarity threshold
+    similarity_threshold = 0.30
+
+    # Create a hash to store grouped inputs
+    @groups = Hash.new { |hash, key| hash[key] = [] }
+
+    # Group inputs based on similarity
+    corpus.each_with_index do |doc, i|
+        # Check if the document is similar to an existing group
+      key = @groups.keys.find do |key_doc|
+        j = corpus.index(key_doc)
+        similarity_matrix[i, j] > similarity_threshold
+      end
+
+      if key
+        @groups[key] << @user_inputs[i]
+      else
+        @groups[doc] = [@user_inputs[i]]
+      end
+    end
+    @groups = @groups.sort_by { |_key, values| -values.size }.to_h
   end
 
   private
