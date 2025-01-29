@@ -22,6 +22,10 @@ class ResultsController < ApplicationController
     @result = Result.new
   end
 
+  def show
+    @result = Result.find(params[:id])
+  end
+
   def create
     @result = Result.new(result_params)
     @result.user = current_user
