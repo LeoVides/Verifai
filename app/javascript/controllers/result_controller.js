@@ -22,7 +22,7 @@ export default class extends Controller {
       .then((data) => {
         console.log(data);
         if (data.user_input) {
-          this.fullResultTarget.innerHTML = `<h2>Result</h2><div>${data.user_input}</div><div>${data.political_bias}</div>`;
+          this.fullResultTarget.innerHTML = `<h2>Result</h2><div>${data.user_input}</div><div>Political bias:${data.political_bias} and fact score:${data.fact_score}</div>`;
         }
       })
       .catch((error) => {
