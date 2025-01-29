@@ -19,7 +19,7 @@ class ResultsController < ApplicationController
     # Prompt to ChatGPT to get the political bias and fact score
     prompt =  <<~TEXT
       Based on this news excerpt: #{@result.user_input}.
-      Return the political_bias of the text (choose  only one between: Far-left, Left, Centre, ight, Far-right),
+      Return the political_bias of the text (choose  only one between: Far-left, Left, Center, Right, Far-right),
       the fact_score (choose only one between: Very low, Low, Medium, High, Very high)
       and a title summarizing the key point of the news excerpt (maximum 5 words).
       Provide your response in JSON format with keys 'political_bias’, 'fact_score'  and ‘title’
