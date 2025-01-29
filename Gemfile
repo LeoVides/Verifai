@@ -80,3 +80,6 @@ gem 'matrix'
 
 # OpenAI gem
 gem "ruby-openai"
+
+# PG search
+gem "pg_search"
