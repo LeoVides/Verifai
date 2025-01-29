@@ -79,3 +79,5 @@ gem 'tf-idf-similarity'
 
 # OpenAI gem
 gem "ruby-openai"
+
+gem 'faker'

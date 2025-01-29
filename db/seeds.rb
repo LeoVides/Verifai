@@ -1,12 +1,4 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
 
 ################### Clean the database ###################
 Result.destroy_all
@@ -20,34 +12,20 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 User.create(
   username: 'alice_wonder',
   email: 'alice.wonder@example.com',
-  password: 'mypassword'
+  password: 'alice.wonder@example.com'
 )
 
-User.create(
-  username: 'jane_doe',
-  email: 'jane.doe@example.com',
-  password: 'mypassword'
-)
+14.times do |i|
+  user = User.create(
+    username: Faker::Internet.username(specifier: 5..10),
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
 
-User.create(
-  username: 'dylan_stone',
-  email: 'dylan.stone@example.com',
-  password: 'mypassword'
-)
+puts "Created #{User.count} users 🤪"
 
-User.create(
-  username: 'ella_bloom',
-  email: 'ella.bloom@example.com',
-  password: 'mypassword'
-)
-
-User.create(
-  username: 'john_cliff',
-  email: 'john.cliff@example.com',
-  password: 'mypassword'
-)
-
-################### Result seeds ###################
+################### Custom result seeds ###################
 Result.create(
   fact_score: 'High',
   political_bias: 'left-leaning',
@@ -78,7 +56,7 @@ Result.create(
   political_bias_confidence: 0.95,
   fact_score_confidence: 0.4,
   title: 'Capitalism and global inequality',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -89,7 +67,7 @@ Result.create(
   political_bias_confidence: 0.85,
   fact_score_confidence: 0.65,
   title: 'Corporate tax cuts and job growth',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -100,7 +78,7 @@ Result.create(
   political_bias_confidence: 0.9,
   fact_score_confidence: 0.2,
   title: 'Climate change conspiracy theories',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -111,7 +89,7 @@ Result.create(
   political_bias_confidence: 0.8,
   fact_score_confidence: 0.85,
   title: 'Wind energy contribution in Europe',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -122,7 +100,7 @@ Result.create(
   political_bias_confidence: 0.9,
   fact_score_confidence: 0.5,
   title: 'Immigration and unemployment rates',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -133,7 +111,7 @@ Result.create(
   political_bias_confidence: 0.7,
   fact_score_confidence: 0.95,
   title: 'NASA Artemis program plans',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -144,7 +122,7 @@ Result.create(
   political_bias_confidence: 0.8,
   fact_score_confidence: 0.2,
   title: 'Military budget and world poverty',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -155,7 +133,7 @@ Result.create(
   political_bias_confidence: 0.85,
   fact_score_confidence: 0.8,
   title: 'Economic growth and deregulation',
-  user_id: rand(1..5)
+  user_id: User.all.sample.id
 )
 
 Result.create(
@@ -190,3 +168,117 @@ Result.create(
   title: 'Economic growth and deregulation',
   user_id: User.last.id
 )
+
+sources = ["The Guardian", "The Wall Street Journal", "Fox News", "CNN", "The Intercept", "Infowars", "BBC", "Al Jazeera"]
+
+Result.create(
+  fact_score: "High",
+  political_bias: "left",
+  source_media: sources.sample,
+  user_input: "Universal healthcare leads to better public health outcomes and reduced costs.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Universal healthcare and public health",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Mixed",
+  political_bias: "right",
+  source_media: sources.sample,
+  user_input: "Gun control laws infringe on the constitutional rights of American citizens.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Gun control and constitutional rights",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Low",
+  political_bias: "far-left",
+  source_media: sources.sample,
+  user_input: "The wealth gap is increasing due to corporate greed and tax loopholes.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Wealth gap and corporate greed",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Very-low",
+  political_bias: "far-right",
+  source_media: sources.sample,
+  user_input: "Renewable energy is a scam pushed by the government to control the market.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Renewable energy and government control",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Very-high",
+  political_bias: "centre",
+  source_media: sources.sample,
+  user_input: "Free markets drive innovation and economic growth better than regulations.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Free markets and economic growth",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "High",
+  political_bias: "left",
+  source_media: sources.sample,
+  user_input: "Immigration strengthens the economy and enhances cultural diversity.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Immigration and economic benefits",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Low",
+  political_bias: "far-right",
+  source_media: sources.sample,
+  user_input: "Mainstream media intentionally suppresses conservative viewpoints.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Media bias and conservative suppression",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Mixed",
+  political_bias: "right",
+  source_media: sources.sample,
+  user_input: "Raising the minimum wage will lead to widespread job losses.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Minimum wage and job market",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Very-high",
+  political_bias: "left",
+  source_media: sources.sample,
+  user_input: "Climate change is an existential crisis that requires immediate action.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Climate change and global impact",
+  user_id: User.all.sample.id
+)
+
+Result.create(
+  fact_score: "Low",
+  political_bias: "far-left",
+  source_media: sources.sample,
+  user_input: "Big pharma is manipulating health policies for profit.",
+  political_bias_confidence: rand(0.6..1.0).round(2),
+  fact_score_confidence: rand(0.3..0.9).round(2),
+  title: "Big pharma and health policies",
+  user_id: User.all.sample.id
+)
+
+puts "Created #{Result.count} results 🎯"
