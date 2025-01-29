@@ -46,3 +46,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card-container {
+  display: block;
+  text-decoration: none;
+}
+
+.card-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-container .card {
+  cursor: pointer; /* Make the card appear clickable */
+  transition: box-shadow 0.3s ease; /* Add smooth shadow transition */
+}
+
+.card-container:hover .card {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}

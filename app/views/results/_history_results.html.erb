@@ -2,7 +2,9 @@
   <% if results.any? %>
     <% results.each do |result| %>
       <div class="col col-12 col-md-6 col-lg-4">
+        <%= link_to result_history_path(result), class: "card-container", data: { turbo: false } do %>
         <%= render "results/card", result: result %>
+        <% end %>
       </div>
     <% end %>
   <% else %>
