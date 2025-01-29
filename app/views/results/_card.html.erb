@@ -1,5 +1,12 @@
 <div class="card-saved">
-  <h1><%= result.title %></h1>
+  <!-- Check if title  is nil -->
+  <% if result.title.nil? %>
+    <h1>No title available</h1>
+  <% else %>
+    <h1 class="truncate"><%= result.title %></h1>
+  <% end %>
+  <p>Query: <%= result.user_input %></p>
+  
   <div class="row-card">
     <h2>Fact score</h2>
 
@@ -33,6 +40,6 @@
   <% if result.fact_score_confidence.nil? %>
     <p>Not enough data to determine confidence</p>
   <% else %>
-    <p><%= result.political_bias %> with <%= result.political_bias_confidence * 100 %>% confidence</p>
+    <p><%= result.political_bias_confidence * 100 %>% confidence</p>
   <% end %>
 </div>
