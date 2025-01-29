@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/results/history", to: "results#history", as: "history"
+  get "results/history/:id", to: "results#show", as: "result_history"
 
   get "results", to: "results#search"
   post "results", to: "results#create"
