@@ -6,6 +6,16 @@ class ResultsController < ApplicationController
 
   def history
     @results = current_user.results
+
+    if params[:query].present?
+      sql_subquery = "title  ILIKE :query OR user_input ILIKE :query OR fact_score ILIKE :query OR political_bias ILIKE :query"
+      @results = @results.where(sql_subquery, query: "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("history-results", partial: "history_results", locals: { results: @results }) }
+      format.html # Needed for normal page load
+    end
   end
 
   def search
