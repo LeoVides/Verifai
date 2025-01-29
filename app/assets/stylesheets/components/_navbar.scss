@@ -16,6 +16,8 @@
   margin-left: clamp(200px, 15%, 500px); /* Matches the sidebar width */
   padding: 20px;
   min-width: calc(100% - 200px); /* Adjust width based on navbar */
+  height: 100vh;
+  overflow-y: auto;
 }
 
 /* When navbar is NOT present (e.g., homepage for not-logged-in users) */
