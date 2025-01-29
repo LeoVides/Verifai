@@ -2,26 +2,48 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 17%;
-  min-width: 150px;
+  width: 15%;
+  min-width: 200px;
   height: 100vh;
+  min-height: 500px;
   background: #1a1a1a;
   justify-content: space-between;
   color: white;
 }
 
-/* Main Content */
-.main-content {
-  margin-left: 17%; /* Matches the sidebar width */
+/* When navbar is present */
+.with-navbar .main-content {
+  margin-left: clamp(200px, 15%, 500px); /* Matches the sidebar width */
   padding: 20px;
-  min-width: calc(100% - 150px);
+  min-width: calc(100% - 200px); /* Adjust width based on navbar */
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    margin-left: 150px;
-  }
+/* When navbar is NOT present (e.g., homepage for not-logged-in users) */
+.without-navbar .main-content {
+  margin-left: 0; /* Reset left margin */
+  padding: 20px; /* Keep padding */
+  min-width: 100%; /* Make it take full width */
 }
+
+/* Keep mobile adjustments */
+@media (max-width: 768px) {
+  .navbar-lewagon {
+    width: 200px; /* Fix navbar to 150px on small screens */
+  }
+
+  .with-navbar .main-content {
+    margin-left: 200px;
+  }
+
+  .without-navbar .main-content {
+    margin-left: 0;
+  }
+
+  // .hidden {
+  //   display: none;
+  // }
+}
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;

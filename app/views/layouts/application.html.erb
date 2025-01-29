@@ -10,10 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= user_signed_in? || !(controller_name == 'pages' && action_name == 'home') ? 'with-navbar' : 'without-navbar' %> ">
     <div class="d-flex">
-      <!-- Sidebar -->
-      <%= render "shared/navbar" %>
+      <!-- Show navbar only if user is logged in OR if not on homepage -->
+      <% if user_signed_in? || !(controller_name == "pages" && action_name == "home") %>
+        <%= render "shared/navbar" %>
+      <% end %>
+
 
       <!-- Main Content -->
       <div class="main-content flex-grow-1">

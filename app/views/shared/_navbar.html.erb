@@ -5,13 +5,16 @@
       <ul class="navbar-nav flex-column">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "Home", root_path , class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Search", results_path , class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "History", history_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Hot topics", "#", class: "nav-link" %>
+            <%= link_to "Hot topics", results_hot_topics_path , class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
@@ -26,10 +29,10 @@
       <!-- Avatar Wrapper -->
       <% if user_signed_in? %>
         <div class="avatar-wrapper d-flex align-items-center">
-          <a href="#" class="avatar">
+          <a href="#" class="avatar hidden">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", alt: "User Avatar" %>
           </a>
-          <%= link_to "My Profile", "Placeholder", class: "profile-text ms-3" %>
+          <%= link_to "My Profile", edit_user_registration_path , class: "profile-text ms-3 hidden" %>
         </div>
       <% end %>
     </div>
