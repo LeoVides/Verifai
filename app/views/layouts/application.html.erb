@@ -10,19 +10,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= user_signed_in? || !(controller_name == 'pages' && action_name == 'home') ? 'with-navbar' : 'without-navbar' %> ">
-    <div class="d-flex">
-      <!-- Show navbar only if user is logged in OR if not on homepage -->
-      <% if user_signed_in? || !(controller_name == "pages" && action_name == "home") %>
-        <%= render "shared/navbar" %>
-      <% end %>
+<body class="<%= user_signed_in? ? 'with-navbar' : (controller_name == 'pages' && action_name == 'home' || controller_name == 'sessions' || controller_name == 'registrations' ? 'without-navbar' : 'with-navbar') %>">
+  <div class="d-flex">
+    <!-- Show navbar if user is signed in, or if the user is not signed in but not on homepage or registration/login pages -->
+    <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions') && !(controller_name == 'registrations') %>
+      <%= render "shared/navbar" %> <!-- Navbar component -->
+    <% end %>
 
-
-      <!-- Main Content -->
-      <div class="main-content flex-grow-1">
-        <%= render "shared/flashes" %>
-        <%= yield %>
-      </div>
+    <!-- Main Content -->
+    <div class="main-content flex-grow-1">
+      <%= render "shared/flashes" %>
+      <%= yield %> <!-- Content of the current page -->
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
