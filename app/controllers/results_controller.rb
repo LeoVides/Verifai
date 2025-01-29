@@ -52,7 +52,19 @@ class ResultsController < ApplicationController
     @media = JSON.parse(@clean_response)["source"]
 
     if @result.save
-      render json: { user_input: @result.user_input, political_bias: @result.fact_score, fact_score: @result.fact_score, title: @result.title, media: @media, message: "Result saved successfully" }
+      # Save the media resultsonly if the result is saved
+      @media.each do |political_bias, url|
+        @result.medias.create(political_bias: political_bias, url: url)
+      end
+
+      render json: {
+        user_input: @result.user_input,
+        political_bias: @result.political_bias,
+        fact_score: @result.fact_score,
+        title: @result.title,
+        media: @media,
+        message: "Result saved successfully"
+      }
     else
       render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
     end
