@@ -76,6 +76,7 @@ end
 
 # Will allow us to find the hot topics
 gem 'tf-idf-similarity'
+gem 'matrix'
 
 # OpenAI gem
 gem "ruby-openai"

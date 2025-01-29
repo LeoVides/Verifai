@@ -27,7 +27,7 @@ export default class extends Controller {
         console.log(data);
         if (data.user_input) {
           this.fullResultTarget.classList.remove('d-none');
-          this.fullResultTarget.innerHTML = `<h2>Result</h2><div>${data.user_input}</div><div>${data.political_bias}</div>`;
+          this.fullResultTarget.innerHTML = `<h2>Result</h2><div>${data.user_input}</div><div><strong>Political bias:</strong>${data.political_bias}. <strong>Fact score:</strong>${data.fact_score}.</div>`;
         }
       })
       .catch((error) => {
