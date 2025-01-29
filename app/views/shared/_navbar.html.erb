@@ -29,10 +29,23 @@
       <!-- Avatar Wrapper -->
       <% if user_signed_in? %>
         <div class="avatar-wrapper d-flex align-items-center">
-          <a href="#" class="avatar hidden">
+          <a href="#" class="avatar hidden position-relative">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", alt: "User Avatar" %>
+            <!-- Badge system  -->
+            <div class="checker-points position-absolute bottom-0 end-0">
+              <% if current_user.checker_score >= 30 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: gold;"></i>
+                <% elsif current_user.checker_score >= 15 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: silver;"></i>
+                <% elsif current_user.checker_score >= 5 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: #cd8031;"></i>
+              <% end %>
+            </div>
+            <!-- Badge system end  -->
           </a>
           <%= link_to "My Profile", edit_user_registration_path , class: "profile-text ms-3 hidden" %>
+
+
         </div>
       <% end %>
     </div>

@@ -10,7 +10,10 @@ export default class extends Controller {
   // Shows the full result
   compute(event) {
     event.preventDefault();
-    console.log('compute');
+    const current_alert = document.querySelector('.alert');
+    if (current_alert != null) {
+      current_alert.remove();
+    }
 
     fetch(this.formTarget.action, {
       method: "POST",
@@ -27,6 +30,14 @@ export default class extends Controller {
         console.log(data);
         if (data.user_input) {
           this.fullResultTarget.classList.remove('d-none');
+      
+          let mediaList = "";
+          Object.entries(data.media).forEach(([key, value]) => {
+            console.log(key, value);
+            mediaList += `<li><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
+
+          });
+
           this.fullResultTarget.innerHTML = `
             <div>
               <p><strong>Input</strong></p>
@@ -71,15 +82,22 @@ export default class extends Controller {
                 </div>
               </div>
             </div>
+            <div>
+              <strong>Fact score:</strong>${data.fact_score}.
+              <strong>Read from other sources:<ul>${mediaList}</ul>
+            </div>
           `;
+
+          this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
+
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         if (error.errors) {
-          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger" role="alert">${error.errors.join(", ")}</div>`);
+          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert">${error.errors.join(", ")}</div>`);
         } else {
-          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger" role="alert">An unexpected error occurred. Please try again.</div>`);
+          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert">An unexpected error occurred. Please try again.</div>`);
         }
       });
   }
