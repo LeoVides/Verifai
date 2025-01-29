@@ -34,7 +34,7 @@ export default class extends Controller {
           let mediaList = "";
           Object.entries(data.media).forEach(([key, value]) => {
             console.log(key, value);
-            mediaList += `<li><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
+            mediaList += `<li class="px-3"><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
           });
 
           this.fullResultTarget.innerHTML = `
@@ -44,7 +44,7 @@ export default class extends Controller {
             </div>
             <div class="row">
               <div class="col col-lg-6">
-                <div class="card-saved">
+                <div class="card-saved py-4">
                   <div class="row-card mt-0">
                     <h2>Political bias</h2>
                     <p class="tag">${data.political_bias}</p>
@@ -52,7 +52,7 @@ export default class extends Controller {
                 </div>
               </div>
               <div class="col col-lg-6">
-                <div class="card-saved">
+                <div class="card-saved py-4">
                   <div class="row-card mt-0">
                     <h2>Fact score</h2>
                     <p class="tag">${data.fact_score}</p>
@@ -60,8 +60,8 @@ export default class extends Controller {
                 </div>
               </div>
             </div>
-            <div>
-              <strong>Read from other sources:<ul>${mediaList}</ul>
+            <div class="row">
+              <strong>Read from other sources:<ul class="list-unstyled d-flex">${mediaList}</ul>
             </div>
           `;
           this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
