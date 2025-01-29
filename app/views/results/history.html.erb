@@ -1,21 +1,18 @@
 <div class="container">
-
-  <h1>Search history</h1>
-
-  <!-- Display search history as cards -->
-  <div class="row">
-    <% if @results.any? %>
-      <% @results.each do |result| %>
-      <div class="col col-6 col-md-4 col-lg-3">
-        <%= render "results/card", result: result %>
-        <%= link_to 'View Result', result_path(result), class: "btn btn-primary mt-2" %>
+  <div class="d-flex justify-content-between">
+    <h1>Search history</h1>
+    <%= form_with url: history_path, method: :get, method: :get, data: { controller: "history-search", action: "input->history-search#submitForm", turbo_frame: "history-results" } do %>
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <%= text_field_tag :query, params[:query], class: "form-control me-2", placeholder: "Search" %>
       </div>
-      <% end %>
-    <% else %>
-      <p>You haven't searched anything yet 🔎</p>
     <% end %>
   </div>
 
-
-
+  <!-- Results will update automatically inside this Turbo Frame -->
+  <turbo-frame id="history-results">
+    <%= render 'history_results', results: @results %>
+  </turbo-frame>
 </div>

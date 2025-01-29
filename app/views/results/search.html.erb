@@ -4,8 +4,9 @@
     <h2>Result</h2>
   </div>
   <%= simple_form_for(@result, data: { result_target: "form", action: "submit->result#compute" }) do |f| %>
-    <%= f.input :user_input, label: false, placeholder: "Search for a result" %>
-    <%= f.button :submit, "Search" %>
+    <%= f.input :user_input, label: false, :input_html => {:rows => 10, id: "user_input", data: { controller: "char-counter", action: "input->char-counter#count", char_counter_target: "input" }}, placeholder: "Enter the text to analyze here (50 to 5000 characters)" %>
+    <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
+    <%= f.button :submit, "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
 
