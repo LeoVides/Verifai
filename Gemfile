@@ -80,3 +80,5 @@ gem 'matrix'
 
 # OpenAI gem
 gem "ruby-openai"
+
+gem 'faker'

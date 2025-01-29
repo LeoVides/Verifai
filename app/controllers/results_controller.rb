@@ -43,6 +43,8 @@ class ResultsController < ApplicationController
     else
       render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
     end
+  rescue StandardError => e
+    render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
   end
 
   def hot_topics
