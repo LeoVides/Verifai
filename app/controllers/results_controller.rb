@@ -16,19 +16,30 @@ class ResultsController < ApplicationController
     @result = Result.new(result_params)
     @result.user = current_user
 
+    # Prompt to ChatGPT to get the political bias and fact score
+    prompt =  <<~TEXT
+      Based on this news excerpt: #{@result.user_input}.
+      Return the political_bias of the text (choose  only one between: Far-left, Left, Centre, ight, Far-right),
+      the fact_score (choose only one between: Very low, Low, Medium, High, Very high)
+      and a title summarizing the key point of the news excerpt (maximum 5 words).
+      Provide your response in JSON format with keys 'political_bias’, 'fact_score'  and ‘title’
+      and use the Media Bias/Fact Check (MBFC) methodology.
+    TEXT
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o-mini",
-      messages: [{ role: "user", content: "Based on this news excerpt: #{@result.user_input}.  Return the political_bias of the text (choose  only one between: Far-left, Left, Centre, rRght, Far-right) and the fact_score (choose only one between: Very low, Low, Medium, High, Very high). Provide your response in JSON format with keys 'political_bias' and 'fact_score' and use the Media Bias/Fact Check (MBFC) methodology." }]
+      messages: [{ role: "user", content: prompt}]
     })
+
+    # Extract the response from ChatGPT and clean it to parse the JSON
     @response = chatgpt_response["choices"][0]["message"]["content"]
     @clean_response = @response.gsub(/```json\n|```/, '')
-
     @result.political_bias = JSON.parse(@clean_response)["political_bias"]
     @result.fact_score = JSON.parse(@clean_response)["fact_score"]
+    @result.title= JSON.parse(@clean_response)["title"]
 
     if @result.save
-      render json: { user_input: @result.user_input, political_bias: @result.fact_score, fact_score: @result.fact_score,  message: "Result saved successfully" }
+      render json: { user_input: @result.user_input, political_bias: @result.fact_score, fact_score: @result.fact_score, title: @result.title, message: "Result saved successfully" }
     else
       render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
     end
