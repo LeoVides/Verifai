@@ -1,20 +1,11 @@
+.avatar-wrapper {
+  display: flex;            /* Aligns items horizontally */
+  align-items: center;      /* Vertically centers avatar and text */
+  gap: 0.5rem;              /* Adds spacing between avatar and profile text */
+}
+
 .avatar {
-  width: 40px;
-  border-radius: 50%;
-}
-.avatar-large {
-  width: 56px;
-  border-radius: 50%;
-}
-.avatar-bordered {
-  width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
-}
-.avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+  width: 40px;              /* Size of the avatar */
+  height: 40px;             /* Ensures it stays circular */
+  border-radius: 50%;       /* Ensures round shape */
 }

@@ -7,6 +7,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+  <% unless user_signed_in? %>
+    <div class="top-right-button">
+      <%= link_to "Get Started", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
     <div class="container">
         <div class="container__item landing-page-container">
             <div class="content__wrapper">
@@ -21,12 +27,6 @@
                     </div>
                     <div class="ellipses ellipses__outer--thick"></div>
                 </div>
-                <div class="scroller">
-                    <div class="timeline">
-                        <span class="timeline__unit"></span>
-                        <span class="timeline__unit timeline__unit--active"></span>
-                        <span class="timeline__unit"></span>
-                    </div>
                 </div>
             </div>
         </div>
