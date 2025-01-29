@@ -30,7 +30,20 @@ export default class extends Controller {
         console.log(data);
         if (data.user_input) {
           this.fullResultTarget.classList.remove('d-none');
-          this.fullResultTarget.innerHTML = `<h2>Result</h2><div>${data.user_input}</div><div><strong>Political bias:</strong>${data.political_bias}. <strong>Fact score:</strong>${data.fact_score}.</div>`;
+
+          let mediaList = "";
+          Object.entries(data.media).forEach(([key, value]) => {
+            console.log(key, value);
+            mediaList += `<li><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
+
+          });
+
+          this.fullResultTarget.innerHTML = `
+            <h2>Result</h2><div>${data.user_input}</div>
+            <div><strong>Political bias:</strong>${data.political_bias}.
+            <strong>Fact score:</strong>${data.fact_score}.
+            <strong>Read from other sources:<ul>${mediaList}</ul></div>`;
+
           this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
         }
       })
