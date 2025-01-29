@@ -1,0 +1,19 @@
+.position-relative {
+  position: relative;
+}
+
+.input-with-button {
+  padding-right: 45px; /* Space for the button */
+}
+
+.send-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: black;
+  border: none;
+  color: #f6f8fa;
+  cursor: pointer;
+  padding: 5px;
+}
