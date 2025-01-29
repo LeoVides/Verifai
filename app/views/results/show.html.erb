@@ -5,7 +5,16 @@
   <div class="col col-6 col-md-4 col-lg-4">
     <%= render "results/card", result: @result %> <!-- Render the card for the selected result -->
     <div class="text-start mt-4">
-      <%= link_to 'Back to History', history_path, class: "btn btn-primary" %>
+      <%# <%= link_to 'Back to History', history_path, class: "btn btn-primary" %>
     </div>
+  </div>
+</div>
+
+<div class="input-group" data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
+  <input class="form-control visually-hidden" data-clipboard-target="input" type="text" value="http://127.0.0.1:3000/results/history/<%= @result.id %>" readonly>
+  <div class="input-group-append">
+    <button id="copy-button" class="btn btn-outline-primary" data-action="click->clipboard#copy">
+      <i class="fas fa-paper-plane"></i>
+    </button>
   </div>
 </div>
