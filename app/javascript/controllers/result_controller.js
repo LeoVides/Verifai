@@ -7,10 +7,6 @@ export default class extends Controller {
   // Shows the full result
   compute(event) {
     event.preventDefault();
-    const current_alert = document.querySelector('.alert');
-    if (current_alert != null) {
-      current_alert.remove();
-    }
 
     fetch(this.formTarget.action, {
       method: "POST",
@@ -24,50 +20,17 @@ export default class extends Controller {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        if (data.user_input) {
-          this.fullResultTarget.classList.remove('d-none');
+        console.log("Background job started:", data);
 
-          let mediaList = "";
-          Object.entries(data.media).forEach(([key, value]) => {
-            console.log(key, value);
-            mediaList += `<li class="px-3"><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
-          });
+        // Show a loading message while waiting for Turbo Stream update
+        this.fullResultTarget.classList.remove("d-none");
+        this.fullResultTarget.innerHTML = `
+          <div class="alert alert-info" role="alert">
+            Processing your request... Please wait.
+          </div>
+        `;
 
-          this.fullResultTarget.innerHTML = `
-            <div>
-              <h2>${data.title}</h2>
-            </div>
-            <div>
-              <p><strong>My input</strong></p>
-              <p>${data.user_input}</p>
-              <div class="row">
-                <div class="col col-lg-6">
-                  <div class="card-saved py-4">
-                    <div class="row-card mt-0">
-                      <h2>Political bias</h2>
-                      <p class="tag">${data.political_bias}</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-lg-6">
-                  <div class="card-saved py-4">
-                    <div class="row-card mt-0">
-                      <h2>Credibility</h2>
-                      <p class="tag">${data.fact_score}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-                <strong>Read from other sources:</strong><ul class="list-unstyled d-flex py-2">${mediaList}</ul>
-            </div>
-          `;
-          
-          this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
-          this.resetForm();
-        }
+        this.resetForm();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -77,6 +40,18 @@ export default class extends Controller {
           this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">An unexpected error occurred. Please try again.</div>`);
         }
       });
+  }
+
+  showLoading() {
+    this.fullResultTarget.classList.remove("d-none");
+    this.fullResultTarget.innerHTML = `
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Processing...</span>
+        </div>
+        <p class="ms-2">Processing your request... Please wait.</p>
+      </div>
+    `;
   }
 
   resetForm() {

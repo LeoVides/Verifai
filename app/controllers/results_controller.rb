@@ -42,54 +42,35 @@ class ResultsController < ApplicationController
   end
 
   def create
-    @result = Result.new(result_params)
-    @result.user = current_user
 
-    if @result.valid?
-      # Prompt to ChatGPT to get the political bias and fact score
-      prompt =  <<~TEXT
-        Based on this news excerpt: #{@result.user_input}.
-        Return the political_bias of the text (choose  only one between: Far-left, Left, Center, Right, Far-right),
-        the fact_score (choose only one between: Very low, Low, Medium, High, Very high),
-        a title summarizing the key point of the news excerpt (maximum 5 words)
-        and a link to the homepage of news outlets of opposite political biases (maximum 3, called 'source').
-        Provide your response in JSON format with keys 'political_bias’, 'fact_score', 'title'and 'source'
-        (source is a hash itself with the 3 links)
-        and use the Media Bias/Fact Check (MBFC) methodology.
-      TEXT
-      client = OpenAI::Client.new
-      chatgpt_response = client.chat(parameters: {
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }]
-      })
+    @result = OpenAiCallJob.perform_later(result_params, current_user)
 
-      # Extract the response from ChatGPT and clean it to parse the JSON
-      @response = chatgpt_response["choices"][0]["message"]["content"]
-      @clean_response = @response.gsub(/```json\n|```/, '')
-      @result.political_bias = JSON.parse(@clean_response)["political_bias"]
-      @result.fact_score = JSON.parse(@clean_response)["fact_score"]
-      @result.title = JSON.parse(@clean_response)["title"]
-      @media = JSON.parse(@clean_response)["source"]
-    end
+    # if @result.save
+    #   @result.medias.each do |media|
+    #     media.save
+    #   end
 
-    if @result.save
-      # Save the media resultsonly if the result is saved
-      @media.each do |political_bias, url|
-        @result.medias.create(political_bias: political_bias, url: url)
+    #   render json: {
+    #     user_input: @result.user_input,
+    #     political_bias: @result.political_bias,
+    #     fact_score: @result.fact_score,
+    #     title: @result.title,
+    #     medias: @result.medias,
+    #     user_checker_score: @result.user.checker_score,
+    #     message: "Result saved successfully"
+    #   }
+    # else
+    #   render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
+    # end
+
+    respond_to do |format|
+      format.json { render json: { message: "Processing started" } }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.append(:results, partial: "results/result",
+          locals: { result: @result })
       end
-
-      render json: {
-        user_input: @result.user_input,
-        political_bias: @result.political_bias,
-        fact_score: @result.fact_score,
-        title: @result.title,
-        media: @media,
-        user_checker_score: @result.user.checker_score,
-        message: "Result saved successfully"
-      }
-    else
-      render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
     end
+
   rescue StandardError => e
     render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
   end

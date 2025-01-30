@@ -81,9 +81,11 @@ gem 'matrix'
 # OpenAI gem
 gem "ruby-openai"
 
-
 # PG search
 gem "pg_search"
 
+# Faker gem
 gem 'faker'
 
+# SolidQueue gem for background jobs
+gem "solid_queue"

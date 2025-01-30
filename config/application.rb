@@ -29,5 +29,8 @@ module Verifai
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set the default queue adapter to SolidQueue
+    config.active_job.queue_adapter = :solid_queue
   end
 end
