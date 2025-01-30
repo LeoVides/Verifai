@@ -17,7 +17,7 @@ export default class extends Controller {
   dismiss_flashes() {
     this.messageTargets.forEach((message) => {
       message.classList.add("fade-out");
-      setTimeout(() => message.remove(), 500); // Wait for animation to finish before removing
+      setTimeout(() => message.remove(), 1000); // Wait for animation to finish before removing
     });
   }
 }
