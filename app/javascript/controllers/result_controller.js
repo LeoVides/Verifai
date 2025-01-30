@@ -64,16 +64,17 @@ export default class extends Controller {
                 <strong>Read from other sources:</strong><ul class="list-unstyled d-flex py-2">${mediaList}</ul>
             </div>
           `;
-          this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
+          
+          this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
           this.resetForm();
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         if (error.errors) {
-          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert">${error.errors.join(", ")}</div>`);
+          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">${error.errors.join(", ")}</div>`);
         } else {
-          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert">An unexpected error occurred. Please try again.</div>`);
+          this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">An unexpected error occurred. Please try again.</div>`);
         }
       });
   }
