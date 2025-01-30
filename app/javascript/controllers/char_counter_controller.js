@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   updateCounter() {
-    console.log("Connected to char-counter controller");
     const counter = document.getElementById("char-count");
     counter.textContent = this.inputTarget.value.length;
     const checkIcon = document.getElementById("char-count-icn");

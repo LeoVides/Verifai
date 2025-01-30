@@ -4,9 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fullResult", "form"]
 
-  connect() {
-  }
-
   // Shows the full result
   compute(event) {
     event.preventDefault();
@@ -39,32 +36,36 @@ export default class extends Controller {
 
           this.fullResultTarget.innerHTML = `
             <div>
-              <p><strong>Input</strong></p>
+              <h2>${data.title}</h2>
+            </div>
+            <div>
+              <p><strong>My input</strong></p>
               <p>${data.user_input}</p>
-            </div>
-            <div class="row">
-              <div class="col col-lg-6">
-                <div class="card-saved py-4">
-                  <div class="row-card mt-0">
-                    <h2>Political bias</h2>
-                    <p class="tag">${data.political_bias}</p>
+              <div class="row">
+                <div class="col col-lg-6">
+                  <div class="card-saved py-4">
+                    <div class="row-card mt-0">
+                      <h2>Political bias</h2>
+                      <p class="tag">${data.political_bias}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col col-lg-6">
+                  <div class="card-saved py-4">
+                    <div class="row-card mt-0">
+                      <h2>Credibility</h2>
+                      <p class="tag">${data.fact_score}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col col-lg-6">
-                <div class="card-saved py-4">
-                  <div class="row-card mt-0">
-                    <h2>Fact score</h2>
-                    <p class="tag">${data.fact_score}</p>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="row">
-              <strong>Read from other sources:<ul class="list-unstyled d-flex">${mediaList}</ul>
+            <div>
+                <strong>Read from other sources:</strong><ul class="list-unstyled d-flex py-2">${mediaList}</ul>
             </div>
           `;
           this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
+          this.resetForm();
         }
       })
       .catch((error) => {
@@ -78,7 +79,6 @@ export default class extends Controller {
   }
 
   resetForm() {
-    console.log("Resetting form inputs")
     this.formTarget.reset() // Clear all fields in the form
   }
 }
