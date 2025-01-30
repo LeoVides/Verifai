@@ -5,15 +5,30 @@ require 'json'
 class ResultsController < ApplicationController
 
   def history
-    @results = current_user.results
+    @results = current_user.results.order(created_at: :desc)
 
     if params[:query].present?
       sql_subquery = "title  ILIKE :query OR user_input ILIKE :query OR fact_score ILIKE :query OR political_bias ILIKE :query"
-      @results = @results.where(sql_subquery, query: "%#{params[:query]}%")
+      @results = @results.where(sql_subquery, query: "%#{params[:query]}%").order(created_at: :desc)
+    end
+
+    # To get the results grouped by date
+    @grouped_results = @results.group_by do |result|
+      if result.created_at.to_date == Date.today
+        "Today"
+      elsif result.created_at >= 1.days.ago
+        "Yesterday"
+      elsif result.created_at >= 7.days.ago
+        "Last 7 Days"
+      elsif result.created_at >= 30.days.ago
+        "Last 30 Days"
+      else
+        result.created_at.strftime("%B %d, %Y") # Format as "January 28, 2025"
+      end
     end
 
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("history-results", partial: "history_results", locals: { results: @results }) }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("history-results", partial: "history_results", locals: { grouped_results: @grouped_results }) }
       format.html # Needed for normal page load
     end
   end

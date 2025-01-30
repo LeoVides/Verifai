@@ -1,6 +1,6 @@
 <div data-controller="result" class="container search">
   <h1>Search</h1>
-  <div data-result-target = "fullResult" class="d-none"></div>
+  <div data-result-target = "fullResult" class="d-none layout"></div>
   <div>
     <%= simple_form_for(@result, data: { result_target: "form", action: "submit->result#compute" }) do |f| %>
       <div class="position-relative">

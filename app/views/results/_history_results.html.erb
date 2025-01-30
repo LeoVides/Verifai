@@ -1,11 +1,15 @@
 <div class="row">
-  <% if results.any? %>
-    <% results.each do |result| %>
-      <div class="col col-12 col-md-6 col-lg-4">
-        <%= link_to result_history_path(result), class: "card-container", data: { turbo: false } do %>
-        <%= render "results/card", result: result %>
-        <% end %>
-      </div>
+  <% if grouped_results.any? %>
+    <% grouped_results.each do |group, results| %>
+      <h2 class="mt-4"><%= group %></h2>
+      <div class="row">
+      <% results.each do |result| %>
+        <div class="col col-12 col-md-6 col-lg-4">
+          <%= link_to result_history_path(result), class: "card-container", data: { turbo: false } do %>
+          <%= render "results/card", result: result %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
     <p>No results found 🔎</p>

@@ -5,9 +5,17 @@
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  min-height: unset !important;
 }
 
 .search p {
   margin-top: 0.5rem;
   margin-bottom: 0rem;
+}
+
+.search .layout {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
