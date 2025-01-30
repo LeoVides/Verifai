@@ -38,5 +38,5 @@
       <p class="tag"><%= result.political_bias  %></p>
     <% end %>
   </div>
-
+  <p class="fst-italic"><%= time_ago_in_words(result.created_at) %> ago</p>
 </div>

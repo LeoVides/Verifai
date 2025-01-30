@@ -6,6 +6,7 @@ puts "------- Seeding the database 🌱 -------"
 
 Result.destroy_all
 User.destroy_all
+Media.destroy_all
 
 # Restart ID counter
 ActiveRecord::Base.connection.reset_pk_sequence!('results')
@@ -29,6 +30,40 @@ User.create(
 end
 
 puts "Created #{User.count} users 🤓"
+
+################### Media seeds ###################
+
+Media.create(name: "The Guardian", url: "https://www.theguardian.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/The_Guardian_2018.svg/1200px-The_Guardian_2018.svg.png")
+Media.create(name: "The Wall Street Journal", url: "https://www.wsj.com", political_bias: "right", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/The_Wall_Street_Journal_logo.svg/1200px-The_Wall_Street_Journal_logo.svg.png")
+Media.create(name: "Fox News", url: "https://www.foxnews.com", political_bias: "right", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fox_News_Channel_logo.svg/1200px-Fox_News_Channel_logo.svg.png")
+Media.create(name: "CNN", url: "https://www.cnn.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/CNN.svg/1920px-CNN.svg.png")
+Media.create(name: "The Intercept", url: "https://theintercept.com", political_bias: "far-left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/0/02/The_Intercept_Logo.png")
+Media.create(name: "Infowars", url: "https://www.infowars.com", political_bias: "far-right", logo_url: "https://upload.wikimedia.org/wikipedia/commons/4/48/InfoWars_Logo.png")
+Media.create(name: "BBC", url: "https://www.bbc.com", political_bias: "centre", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/BBC_Logo_2021.svg/800px-BBC_Logo_2021.svg.png")
+Media.create(name: "Al Jazeera", url: "https://www.aljazeera.com", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Al_Jazeera_Logo.svg/1200px-Al_Jazeera_Logo.svg.png")
+Media.create(name: "The New York Times", url: "https://www.nytimes.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/New_York_Times_logo_variation.jpg/1200px-New_York_Times_logo_variation.jpg")
+Media.create(name: "The Washington Post", url: "https://www.washingtonpost.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/9/91/The_Washington_Post_logo.png")
+Media.create(name: "Reuters", url: "https://www.reuters.com", political_bias: "centre", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Reuters_logo.svg/1200px-Reuters_logo.svg.png")
+Media.create(name: "NBC News", url: "https://www.nbcnews.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/NBC_News_2011.svg/1200px-NBC_News_2011.svg.png")
+Media.create(name: "The Independent", url: "https://www.independent.co.uk", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/The_Independent_2016_logo.svg/1200px-The_Independent_2016_logo.svg.png")
+Media.create(name: "BuzzFeed News", url: "https://www.buzzfeednews.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/6/66/BuzzFeed_News_logo.png")
+Media.create(name: "The Economist", url: "https://www.economist.com", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/The_Economist_Logo.svg/1200px-The_Economist_Logo.svg.png")
+Media.create(name: "The Times", url: "https://www.thetimes.co.uk", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/The_Times_Logo.svg/1200px-The_Times_Logo.svg.png")
+Media.create(name: "The Daily Mail", url: "https://www.dailymail.co.uk", political_bias: "right", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Daily_Mail_Logo.svg/1200px-Daily_Mail_Logo.svg.png")
+Media.create(name: "The Sun", url: "https://www.thesun.co.uk", political_bias: "right", logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/The_Sun_logo.svg/1200px-The_Sun_logo.svg.png")
+Media.create(name: "MSNBC", url: "https://www.msnbc.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/8/8d/MSNBC_logo.png")
+Media.create(name: "USA Today", url: "https://www.usatoday.com", political_bias: "centre", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/USA_Today_Logo.svg/1200px-USA_Today_Logo.svg.png")
+Media.create(name: "Politico", url: "https://www.politico.com", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/commons/4/41/Politico_Logo.png")
+Media.create(name: "HuffPost", url: "https://www.huffpost.com", political_bias: "far-left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/HuffPost.svg/1200px-HuffPost.svg.png")
+Media.create(name: "Vox", url: "https://www.vox.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Vox_logo.svg/1200px-Vox_logo.svg.png")
+Media.create(name: "NPR", url: "https://www.npr.org", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/NPR_logo.svg/1200px-NPR_logo.svg.png")
+Media.create(name: "The Daily Beast", url: "https://www.thedailybeast.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/The_Daily_Beast_Logo.svg/1200px-The_Daily_Beast_Logo.svg.png")
+Media.create(name: "CBS News", url: "https://www.cbsnews.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CBS_News_logo.svg/1200px-CBS_News_logo.svg.png")
+Media.create(name: "Sky News", url: "https://news.sky.com", political_bias: "center", logo_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Sky_News_logo.svg/1200px-Sky_News_logo.svg.png")
+Media.create(name: "The Atlantic", url: "https://www.theatlantic.com", political_bias: "left", logo_url: "https://upload.wikimedia.org/wikipedia/commons/4/49/The_Atlantic_logo.png")
+Media.create(name: "The Spectator", url: "https://www.spectator.co.uk", political_bias: "right", logo_url: "https://upload.wikimedia.org/wikipedia/commons/e/e5/The_Spectator_logo.png")
+
+puts "Created #{Media.count} media outlets 📰"
 
 ################### Result seeds ###################
 
@@ -687,6 +722,13 @@ Result.create(
   title: "Wealth concentration and inequality",
   user_id: User.all.sample.id
 )
+
+Result.all.each do |result|
+  result.update(created_at: Faker::Date.between(from: 1.month.ago, to: Date.today))
+  result.medias << Media.where(political_bias: "left").sample
+  result.medias << Media.where(political_bias: "center").sample
+  result.medias << Media.where(political_bias: "right").sample
+end
 
 puts "Created #{Result.count} results 🎯"
 
