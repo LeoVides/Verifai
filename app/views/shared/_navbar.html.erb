@@ -30,7 +30,11 @@
       <% if user_signed_in? %>
         <div class="avatar-wrapper d-flex align-items-center">
           <a href="#" class="avatar hidden position-relative">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", alt: "User Avatar" %>
+            <% if current_user.profile_picture.attached? %>
+              <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", alt: "User Avatar" %>
+            <% end %>
             <!-- Badge system  -->
             <div class="checker-points position-absolute bottom-0 end-0">
               <% if current_user.checker_score >= 30 %>
