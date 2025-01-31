@@ -56,18 +56,6 @@ export default class extends Controller {
       });
   }
 
-  showLoading() {
-    this.fullResultTarget.classList.remove("d-none");
-    this.fullResultTarget.innerHTML = `
-      <div class="d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Processing...</span>
-        </div>
-        <p class="ms-2">Processing your request... Please wait.</p>
-      </div>
-    `;
-  }
-
   resetForm() {
     this.formTarget.reset() // Clear all fields in the form
   }
