@@ -6,6 +6,8 @@
   <% else %>
     <h1 class="truncate"><%= result.title %></h1>
   <% end %>
+
+  <!-- Query -->
   <p>Query: <%= result.user_input %></p>
   <!-- Check if media  is nil -->
   <% unless controller_name == 'results' && action_name == 'history' %>
