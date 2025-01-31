@@ -8,7 +8,7 @@
             <%= link_to "Home", root_path , class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Search", results_path , class: "nav-link" %>
+            <%= link_to "Fact check", results_path , class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "History", history_path, class: "nav-link" %>
@@ -33,7 +33,10 @@
             <% if current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>
             <% else %>
-              <div class="avatar-placeholder"></div>
+               <img src="https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+                      alt="Placeholder Avatar"
+                      class="avatar-placeholder-picture"
+                      style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
             <% end %>
             <!-- Badge system  -->
             <div class="checker-points position-absolute bottom-0 end-0">
@@ -47,7 +50,7 @@
             </div>
             <!-- Badge system end  -->
           </a>
-          <%= link_to "My Profile", edit_user_registration_path , class: "profile-text ms-3 hidden" %>
+          <%= link_to current_user.username, edit_user_registration_path , class: "profile-text ms-3 hidden" %>
 
 
         </div>
