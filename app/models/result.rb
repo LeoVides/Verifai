@@ -9,7 +9,11 @@ class Result < ApplicationRecord
   pg_search_scope :search_by_results,
     against: [ :title, :user_input, :fact_score, :political_bias ],
     using: {
-      tsearch: { prefix: true }
+      tsearch: {
+        dictionary: 'english',
+        any_word: true,  # Allows matching any word in the query
+        prefix: true     # Allows partial matching
+      }
     }
 
   private
