@@ -8,9 +8,6 @@ class ResultsController < ApplicationController
     @results = current_user.results.order(created_at: :desc)
 
     if params[:query].present?
-      # sql_subquery = "title  ILIKE :query OR user_input ILIKE :query OR fact_score ILIKE :query OR political_bias ILIKE :query"
-      # @results = @results.where(sql_subquery, query: "%#{params[:query]}%").order(created_at: :desc)
-
       query_terms = params[:query].split.map { |term| "%#{term}%" }
 
       sql_subquery = query_terms.map do
