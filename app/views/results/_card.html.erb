@@ -1,21 +1,23 @@
 <div class="card-saved">
 
   <!-- Check if title  is nil -->
-  <% if result.title.nil? %>
-    <h1>No title available</h1>
-  <% else %>
-    <h1 class="truncate"><%= result.title %></h1>
-  <% end %>
-  <p>Query: <%= result.user_input %></p>
-  <!-- Check if media  is nil -->
-  <% if result.medias.nil? %>
-    <p>No media available</p>
-  <% else %>
-    <% result.medias.each do |item| %>
-      <p>Media: <%= item.url %></p>
+  <% unless controller_name == 'results' && action_name == 'history' %>
+    <% if result.title.nil? %>
+      <h1>No title available</h1>
+    <% else %>
+      <h1 class="truncate"><%= result.title %></h1>
+    <% end %>
+    <p>Query: <%= result.user_input %></p>
+    <!-- Check if media  is nil -->
+    <% if result.medias.nil? %>
+      <p>No media available</p>
+    <% else %>
+      <% result.medias.each do |item| %>
+        <p>Media: <%= item.url %></p>
+      <% end %>
     <% end %>
   <% end %>
-
+  
   <div class="row-card">
     <h2>Fact score</h2>
 
