@@ -8,11 +8,13 @@
   <% end %>
   <p>Query: <%= result.user_input %></p>
   <!-- Check if media  is nil -->
-  <% if result.medias.nil? %>
-    <p>No media available</p>
-  <% else %>
-    <% result.medias.each do |item| %>
-      <p>Media: <%= item.url %></p>
+  <% unless controller_name == 'results' && action_name == 'history' %>
+    <% if result.medias.nil? %>
+      <p>No media available</p>
+    <% else %>
+      <% result.medias.each do |item| %>
+        <p>Media: <%= item.url %></p>
+      <% end %>
     <% end %>
   <% end %>
 
