@@ -20,6 +20,12 @@
   overflow-y: auto;
 }
 
+.with-navbar .devise-container {
+  margin-left: clamp(200px, 15%, 500px); /* Ensures edit profile page is not hidden */
+  padding: 20px;
+  min-width: calc(100% - 200px);
+}
+
 /* When navbar is NOT present (e.g., homepage for not-logged-in users) */
 .without-navbar .main-content {
   margin-left: 0; /* Reset left margin */
@@ -33,7 +39,8 @@
     width: 200px; /* Fix navbar to 150px on small screens */
   }
 
-  .with-navbar .main-content {
+  .with-navbar .main-content
+  .with-navbar .devise-container {
     margin-left: 200px;
   }
 
