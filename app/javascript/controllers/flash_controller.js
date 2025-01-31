@@ -11,7 +11,7 @@ export default class extends Controller {
   startTimeout() {
     setTimeout(() => {
       this.dismiss_flashes();
-    }, 5000); // Flash disappears after 3 seconds
+    }, 5000); // Flash disappears after 5 seconds
   }
 
   dismiss_flashes() {
