@@ -1,36 +1,62 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="devise-container">
+  <% if resource.profile_picture.attached? && resource.profile_picture.key.present? %>
+    <div>
+      <%= cl_image_tag resource.profile_picture.key,
+                      width: 300,
+                      height: 300,
+                      crop: :fill,
+                      gravity: :face,
+                      radius: "max",
+                      alt: "Profile Picture",
+                      class: "profile-avatar" %>
+      <br>
+          <%= link_to remove_profile_picture_path,
+                  data: { turbo_confirm: "Are you sure you want to delete your profile picture?", turbo_method: :delete },
+                  class: "btn btn-danger" do %>
+        <i class="fa-solid fa-trash"></i>
+      <% end %>
+    </div>
+  <% else %>
+    <div style="width: 300px; height: 300px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #888; font-size: 16px; border-radius: 50%;">
+      Placeholder
+    </div>
+  <% end %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-  <div class="form-inputs">
-    <%= f.input :username, required: true, autofocus: true %>
-    <%= f.input :email, required: true, autofocus: true %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+    <%= f.error_notification %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :username, required: true, autofocus: true %>
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :profile_picture, as: :file, label: "Upload Profile Picture" %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
 
-<h3>Cancel my account</h3>
+      <%= f.input :password,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+    </div>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+    <div class="form-actions mb-3">
+      <%= f.button :submit, "Update", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-<%= link_to "Back", :back %>
+
+  <div> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger mb-3"%></div>
+
+  <%= link_to "Back", :back, class: "btn btn-secondary mt-3" %>
+</div>

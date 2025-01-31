@@ -41,6 +41,12 @@ class ResultsController < ApplicationController
     @result = Result.find(params[:id])
   end
 
+  def destroy
+    @result = Result.find(params[:id])
+    @result.destroy
+    redirect_to root_path, status: :see_other, notice: "Result was successfully deleted."
+  end
+
   def create
 
     @result = OpenAiCallJob.perform_later(result_params, current_user)
@@ -95,4 +101,5 @@ class ResultsController < ApplicationController
   def result_params
     params.require(:result).permit(:user_input)
   end
+
 end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :results
+  has_one_attached :profile_picture
 
   def add_points_to_checker_score
     self.update(checker_score: self.checker_score + 5)

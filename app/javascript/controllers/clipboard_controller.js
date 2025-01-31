@@ -14,11 +14,13 @@ export default class extends Controller {
     // Disable the button and change the text to feedbackText
     event.currentTarget.disabled = true;
     event.currentTarget.innerText = this.feedbackTextValue;
+    const target = event.currentTarget
 
-    // Reset the button after 2 seconds
-    setTimeout(() => {
-      event.currentTarget.disabled = false;
-      event.currentTarget.innerText = 'Copy to Clipboard';  // Reset the button text
-    }, 2000); // 2000 milliseconds = 2 seconds
+    setTimeout(function() {
+      // Use the captured event object here
+      console.log('Captured Event:', target);
+      target.disabled = false
+      target.innerHTML = '<i class="fas fa-paper-plane"></i>'
+    }, 2000);
   }
 }

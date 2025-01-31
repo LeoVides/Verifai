@@ -10,10 +10,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-<body class="<%= user_signed_in? ? 'with-navbar' : (controller_name == 'pages' && action_name == 'home' || controller_name == 'sessions' || controller_name == 'registrations' ? 'without-navbar' : 'with-navbar') %>">
+<body class="<%= user_signed_in? ? 'with-navbar' : 'without-navbar' %>">
   <div class="d-flex">
-    <!-- Show navbar if user is signed in, or if the user is not signed in but not on homepage or registration/login pages -->
-    <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions') && !(controller_name == 'registrations') %>
+    <!-- Show navbar if the user is signed in OR if the user is NOT on home, login, or registration pages -->
+    <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions' && action_name == 'new') && !(controller_name == 'registrations' && action_name == 'new') %>
       <%= render "shared/navbar" %> <!-- Navbar component -->
     <% end %>
 
