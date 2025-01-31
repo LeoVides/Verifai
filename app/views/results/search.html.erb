@@ -1,9 +1,10 @@
 <div data-controller="result" class="container search">
-  <h1>Search</h1>
+  <h1>Fact Check</h1>
   <%= turbo_stream_from dom_id(current_user) %>
   <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">
     <!-- This section will show the loading spinner and be replaced by the final result -->
   </div>
+
   <div>
     <%= simple_form_for(@result, data: { result_target: "form", action: "submit->result#compute" }) do |f| %>
       <div class="position-relative">
@@ -12,7 +13,8 @@
             id: "user_input", rows: 5,
             data: { controller: "char-counter", action: "input->char-counter#count", char_counter_target: "input" } }
           %>
-        <%= f.button :submit, "Search", class: "btn btn-primary send-button", data: {result_target: "button"} %>
+
+        <%= f.button :submit, "Check", class: "btn btn-primary send-button", data: {result_target: "button"} %>
       </div>
       <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
     <% end %>
