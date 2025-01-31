@@ -6,14 +6,18 @@
   <% else %>
     <h1 class="truncate"><%= result.title %></h1>
   <% end %>
-  <p><strong>Query:</strong> <%= result.user_input %></p>
+
+  <!-- Query -->
+  <p><strong>Query: </strong><%= result.user_input %></p>
   <br>
+
   <!-- Check if summary is nil -->
   <% if controller_name == 'results' && action_name == 'show' %>
     <% unless result.summary.nil? %>
-      <p><strong>Summary:</strong> <%= result.summary %></p>
+      <p><strong>Summary: </strong><%= result.summary %></p>
       <br>
     <% end %>
+
   <% end %>
   <!-- Check if media is nil -->
   <% unless controller_name == 'results' && action_name == 'history' %>
