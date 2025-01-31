@@ -15,16 +15,17 @@
 .with-navbar .main-content {
   margin-left: clamp(200px, 15%, 500px); /* Matches the sidebar width */
   padding: 20px;
-  min-width: calc(100% - 200px); /* Adjust width based on navbar */
+  max-width: calc(100% - 200px); /* Adjust width based on navbar */
   height: 100vh;
-  overflow-y: auto;
 }
 
 .with-navbar .devise-container {
   margin-left: clamp(200px, 15%, 500px); /* Ensures edit profile page is not hidden */
   padding: 20px;
-  min-width: calc(100% - 200px);
+  max-width: calc(100% - 200px);
 }
+
+
 
 /* When navbar is NOT present (e.g., homepage for not-logged-in users) */
 .without-navbar .main-content {
@@ -48,9 +49,6 @@
     margin-left: 0;
   }
 
-  // .hidden {
-  //   display: none;
-  // }
 }
 
 
