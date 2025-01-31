@@ -44,7 +44,7 @@ export default class extends Controller {
         this.buttonTarget.classList.add("disabled");
         setTimeout(() => {
           this.buttonTarget.classList.remove("disabled");
-        }, 2000); // Enable button after 2 seconds
+        }, 5000); // Enable button after 5 seconds
       })
       .catch((error) => {
         console.error("Error:", error);
