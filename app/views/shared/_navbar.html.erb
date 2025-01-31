@@ -33,7 +33,7 @@
             <% if current_user.profile_picture.attached? %>
               <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>
             <% else %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar rounded-circle", alt: "User Avatar" %>
+              <div class="avatar-placeholder"></div>
             <% end %>
             <!-- Badge system  -->
             <div class="checker-points position-absolute bottom-0 end-0">

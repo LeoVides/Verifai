@@ -1,3 +1,5 @@
-<% @groups.each do |key, values| %>
-  <p><%= "Group for '#{key.text}': #{values.size}" %></p>
-<% end %>
+<div class="devise container">
+  <% @groups.each do |key, values| %>
+    <p><%= "Group for '#{key.text}': #{values.size}" %></p>
+  <% end %>
+</div>

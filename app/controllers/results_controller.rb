@@ -44,7 +44,7 @@ class ResultsController < ApplicationController
   def destroy
     @result = Result.find(params[:id])
     @result.destroy
-    redirect_to history_path, status: :see_other, notice: "Result was successfully deleted."
+    redirect_to root_path, status: :see_other, notice: "Result was successfully deleted."
   end
 
   def create
