@@ -17,12 +17,14 @@
   padding: 20px;
   max-width: calc(100% - 200px); /* Adjust width based on navbar */
   height: 100vh;
+  overflow-y: auto;
 }
 
 .with-navbar .devise-container {
   margin-left: clamp(200px, 15%, 500px); /* Ensures edit profile page is not hidden */
   padding: 20px;
   max-width: calc(100% - 200px);
+  overflow-y: auto;
 }
 
 
@@ -32,6 +34,7 @@
   margin-left: 0; /* Reset left margin */
   padding: 20px; /* Keep padding */
   min-width: 100%; /* Make it take full width */
+  overflow-y: auto;
 }
 
 /* Keep mobile adjustments */
@@ -43,10 +46,12 @@
   .with-navbar .main-content
   .with-navbar .devise-container {
     margin-left: 200px;
+    overflow-y: auto;
   }
 
   .without-navbar .main-content {
     margin-left: 0;
+    overflow-y: auto;
   }
 
 }
