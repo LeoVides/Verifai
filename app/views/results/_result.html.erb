@@ -1,0 +1,51 @@
+<div id="<%= dom_id(result) %>">
+  <h2><%= result.title %></h2>
+  <p><strong>My input:</strong></p>
+  <p><%= result.user_input %></p>
+
+  <div class="row">
+    <div class="col col-lg-6">
+      <div class="card-saved py-4">
+        <div class="row-card mt-0">
+          <h2>Political bias</h2>
+          <p class="tag"><%= result.political_bias %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col col-lg-6">
+      <div class="card-saved py-4">
+        <div class="row-card mt-0">
+          <h2>Credibility</h2>
+          <p class="tag"><%= result.fact_score %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card-saved py-4">
+          <div class="row-card mt-0">
+            <h2>Explanation</h2>
+            <p class="tag"><%= result.summary %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <strong>Read from other sources:</strong>
+    <ul class="list-unstyled d-flex py-2">
+      <% result.medias.each do |media| %>
+        <li class="px-3">
+          <strong><%= media.political_bias %>:</strong>
+          <a href="<%= media.url %>" target="_blank"><%= media.url %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
+    Success! You now have <%= result.user.checker_score %> checker points!
+    <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i>
+  </div>
+</div>

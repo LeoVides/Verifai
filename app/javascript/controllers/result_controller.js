@@ -2,16 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="result"
 export default class extends Controller {
-  static targets = ["fullResult", "form"]
+  static targets = ["fullResult", "form", "button"]
 
   // Shows the full result
   compute(event) {
     event.preventDefault();
-    const current_alert = document.querySelector('.alert');
-    if (current_alert != null) {
-      current_alert.remove();
-    }
 
+    // Call the Rails controller create action
     fetch(this.formTarget.action, {
       method: "POST",
       headers: { "Accept": "application/json" },
@@ -24,50 +21,30 @@ export default class extends Controller {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        if (data.user_input) {
-          this.fullResultTarget.classList.remove('d-none');
+        console.log("Background job started:", data);
 
-          let mediaList = "";
-          Object.entries(data.media).forEach(([key, value]) => {
-            console.log(key, value);
-            mediaList += `<li class="px-3"><strong>${key}:</strong> <a href="${value}" target="_blank">${value}</a></li>`;
-          });
+        // Clear the full result target
+        this.fullResultTarget.innerHTML = "";
 
-          this.fullResultTarget.innerHTML = `
-            <div>
-              <h2>${data.title}</h2>
-            </div>
-            <div>
-              <p><strong>My input</strong></p>
-              <p>${data.user_input}</p>
-              <div class="row">
-                <div class="col col-lg-6">
-                  <div class="card-saved py-4">
-                    <div class="row-card mt-0">
-                      <h2>Political bias</h2>
-                      <p class="tag">${data.political_bias}</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-lg-6">
-                  <div class="card-saved py-4">
-                    <div class="row-card mt-0">
-                      <h2>Credibility</h2>
-                      <p class="tag">${data.fact_score}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-                <strong>Read from other sources:</strong><ul class="list-unstyled d-flex py-2">${mediaList}</ul>
-            </div>
-          `;
-          
-          this.fullResultTarget.insertAdjacentHTML('afterend', `<div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">Success! Your now have ${data.user_checker_score} checker points! <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i></div>`);
-          this.resetForm();
-        }
+        // Show the full result target
+        this.fullResultTarget.classList.remove("d-none");
+
+        // Insert the user input and a loader
+        this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="box">
+                                                                  <p><strong>My input:</strong></p>
+                                                                  <p>${data.user_input}</p>
+                                                                  <div class="loader1"></div>
+                                                                </div>`);
+        // Show a flash message
+        this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="alert alert-info" role="alert">
+          Processing your request... Please wait.
+        </div>`);
+
+        this.resetForm();
+        this.buttonTarget.classList.add("disabled");
+        setTimeout(() => {
+          this.buttonTarget.classList.remove("disabled");
+        }, 5000); // Enable button after 5 seconds
       })
       .catch((error) => {
         console.error("Error:", error);

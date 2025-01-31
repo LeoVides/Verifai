@@ -81,10 +81,17 @@ gem 'matrix'
 # OpenAI gem
 gem "ruby-openai"
 
-
 # PG search
 gem "pg_search"
 
+# Faker gem
 gem 'faker'
 
+
+gem "solid_queue"
+
+# Turbostream setup
+gem "solid_cable"
+
 gem "cloudinary"
+
