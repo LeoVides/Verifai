@@ -45,26 +45,8 @@ class ResultsController < ApplicationController
 
     @result = OpenAiCallJob.perform_later(result_params, current_user)
 
-    # if @result.save
-    #   @result.medias.each do |media|
-    #     media.save
-    #   end
-
-    #   render json: {
-    #     user_input: @result.user_input,
-    #     political_bias: @result.political_bias,
-    #     fact_score: @result.fact_score,
-    #     title: @result.title,
-    #     medias: @result.medias,
-    #     user_checker_score: @result.user.checker_score,
-    #     message: "Result saved successfully"
-    #   }
-    # else
-    #   render json: { errors: @result.errors.full_messages }, status: :unprocessable_entity
-    # end
-
     respond_to do |format|
-      format.json { render json: { message: "Processing started" } }
+      format.json { render json: { message: "Processing started", user_input: result_params[:user_input] } }
       format.turbo_stream do
         render turbo_stream: turbo_stream.append(:results, partial: "results/result",
           locals: { result: @result })

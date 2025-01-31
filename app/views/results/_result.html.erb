@@ -28,7 +28,7 @@
       <% result.medias.each do |media| %>
         <li class="px-3">
           <strong><%= media.political_bias %>:</strong>
-          <a href="<%= media.url %>" target="_blank"><%= media.name %></a>
+          <a href="<%= media.url %>" target="_blank"><%= media.url %></a>
         </li>
       <% end %>
     </ul>

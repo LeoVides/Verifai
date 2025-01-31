@@ -89,3 +89,6 @@ gem 'faker'
 
 # SolidQueue gem for background jobs
 gem "solid_queue"
+
+# Turbostream setup
+gem "solid_cable"

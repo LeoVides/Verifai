@@ -1,7 +1,7 @@
 <div data-controller="result" class="container search">
-  <%= turbo_stream_from dom_id(result) %>
   <h1>Search</h1>
-  <div data-result-target = "fullResult" class="d-none layout">
+  <%= turbo_stream_from dom_id(current_user) %>
+  <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">
     <!-- This section will show the loading spinner and be replaced by the final result -->
   </div>
   <div>
@@ -12,7 +12,7 @@
             id: "user_input", rows: 5,
             data: { controller: "char-counter", action: "input->char-counter#count", char_counter_target: "input" } }
           %>
-        <%= f.button :submit, "Search", class: "btn btn-primary send-button" %>
+        <%= f.button :submit, "Search", class: "btn btn-primary send-button", data: {result_target: "button"} %>
       </div>
       <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
     <% end %>
