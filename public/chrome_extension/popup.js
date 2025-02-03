@@ -1,28 +1,32 @@
-function listenClick() {
-  const form = document.getElementById('search-form');
-  const textArea = document.getElementById('user_input');
-  const results = document.getElementById('results');
+// Get needed HTML elements
+const form = document.getElementById('search-form');
+const textArea = document.getElementById('user_input');
+const results = document.getElementById('results');
+const button = document.getElementById('send-data');
 
+// Event listener for form submission
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  // console.log('Button clicked in popup.js');
+  const userInput = textArea.value;
+  console.log(userInput);
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    // console.log('Button clicked in popup.js');
-    const userInput = textArea.value;
-    console.log(userInput);
-
-    fetch(form.action, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: new FormData(form)
-    })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        results.innerHTML = data.partial;
-      })
-
+  fetch(form.action, {
+    method: "POST",
+    headers: { "Accept": "application/json" },
+    body: new FormData(form)
   })
-}
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data);
+      results.innerHTML = data.partial;
 
+      // Reset form after successful submission
+      form.reset();
 
-listenClick();
+      button.classList.add("disabled");
+      setTimeout(() => {
+        button.classList.remove("disabled");
+      }, 5000); // Enable button after 5 seconds
+    })
+})

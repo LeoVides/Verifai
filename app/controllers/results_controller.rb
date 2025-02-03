@@ -51,6 +51,10 @@ class ResultsController < ApplicationController
   end
 
   def create
+    # Conditional so we do not have to login in the plugin, so we assign a specific user to be the plugin_user
+    # user = request.format.json? ? User.extension_user : current_user
+    # @result = OpenAiCallJob.perform_later(result_params, user)
+
     respond_to do |format|
       format.json do
         @result = OpenAiCallJob.perform_now(result_params, User.extension_user)
@@ -62,8 +66,10 @@ class ResultsController < ApplicationController
       end
       format.turbo_stream do
         @result = OpenAiCallJob.perform_later(result_params, current_user)
-        render turbo_stream: turbo_stream.append(:results, partial: "results/result",
-          locals: { result: @result })
+        render turbo_stream: turbo_stream.append(:results,
+          partial: "results/result",
+          locals: { result: @result }
+        )
       end
     end
 
