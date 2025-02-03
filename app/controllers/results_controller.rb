@@ -3,6 +3,9 @@ require 'matrix'
 require 'json'
 
 class ResultsController < ApplicationController
+  # Not going to auth for the plugin to work
+  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :authenticate_user!, only: [:create]
 
   def history
     @results = current_user.results.order(created_at: :desc)
@@ -48,19 +51,24 @@ class ResultsController < ApplicationController
   end
 
   def create
-
-    @result = OpenAiCallJob.perform_later(result_params, current_user)
-
     respond_to do |format|
-      format.json { render json: { message: "Processing started", user_input: result_params[:user_input] } }
+      format.json do
+        @result = OpenAiCallJob.perform_now(result_params, User.extension_user)
+        render json: {
+          message: "Processing started",
+          user_input: result_params[:user_input],
+          partial: render_to_string(partial: 'results/result', locals: { result: @result }, formats: [:html])
+        }
+      end
       format.turbo_stream do
+        @result = OpenAiCallJob.perform_later(result_params, current_user)
         render turbo_stream: turbo_stream.append(:results, partial: "results/result",
           locals: { result: @result })
       end
     end
 
-  rescue StandardError => e
-    render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
+  # rescue StandardError => e
+  #   render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
   end
 
   def hot_topics

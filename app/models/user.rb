@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def add_points_to_checker_score
     self.update(checker_score: self.checker_score + 5)
   end
+
+  def self.extension_user
+    User.find_by(email: "alice.wonder@example.com") || User.create(username: 'alice_wonder', email: 'alice.wonder@example.com', password: 'alice.wonder@example.com')
+  end
 end

@@ -10,16 +10,19 @@
   <body>
     <div class="pop-up-container">
       <h1>Fact check</h1>
-      <form id="search-form">
-        <div class="position-relative">
-          <textarea type="text" id="user_input" class="form-control input-with-button"
-            placeholder="Enter the text to analyze here (50 to 5000 characters)"
-            rows="5">
-            </textarea>
-          <button id="send-data" type="submit" class="btn btn-primary send-button">Check</button>
-        </div>
-        <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
-      </form>
+
+      <div id="results"></div>
+
+      <div class="container search">
+        <form method="post" id="search-form" action="http://localhost:3000/results">
+          <div class="position-relative">
+            <textarea name="result[user_input]" type="text" id="user_input" class="form-control input-with-button" placeholder="Enter the text to analyze here (50 to 5000 characters)" rows="5"></textarea>
+            <button id="send-data" type="submit" class="btn btn-primary send-button">Check</button>
+          </div>
+          <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
+        </form>
+      </div>
+
     </div>
     <script type="text/javascript" src="popup.js"></script>
   </body>
