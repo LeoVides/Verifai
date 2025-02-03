@@ -13,7 +13,6 @@
 
 /* When navbar is present */
 .with-navbar .main-content {
-  margin-left: clamp(200px, 15%, 500px); /* Matches the sidebar width */
   padding: 20px;
   max-width: calc(100% - 200px); /* Adjust width based on navbar */
   height: 100vh;
@@ -93,12 +92,6 @@
   margin-left: 5px;
 }
 
-.navbar-lewagon .profile-text {
-  color: white;
+.profile-text {
   text-decoration: none;
-}
-.navbar-lewagon .profile-text:hover {
-  background: #333333;
-  color: #f5f5f5;
-  text-decoration: none; /* Ensure no underline appears on hover */
 }
