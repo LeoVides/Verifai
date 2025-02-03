@@ -94,4 +94,3 @@ gem "solid_queue"
 gem "solid_cable"
 
 gem "cloudinary"
-

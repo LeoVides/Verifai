@@ -9,6 +9,7 @@
         <div class="row-card mt-0">
           <h2>Political bias</h2>
           <p class="tag"><%= result.political_bias %></p>
+          <%= image_tag("#{result.political_bias.downcase}.png", width: "300px", class:"p-2") %>
         </div>
       </div>
     </div>

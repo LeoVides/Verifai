@@ -55,9 +55,13 @@
   }
 }
 .editor-placeholder {
-  color: var(--base-muted-foreground, #71717a);
+  background-color: white;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: none;
   flex: 1;
   font: var(--font-weight-normal, 400)
     var(--typography-base-sizes-small-font-size, 14px) /
