@@ -6,9 +6,19 @@
 //   min-height: unset !important;
 // }
 
-.search p {
-  margin-top: 0.5rem;
+p {
+  margin-top: 0rem;
   margin-bottom: 0rem;
+}
+
+h6 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+.user-input {
+  background-color: #f4f4f5;
+  width: 60%;
 }
 
 .search .layout {
@@ -16,4 +26,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.political-bias {
+  bottom: 20px;
+  right: 48%;
 }

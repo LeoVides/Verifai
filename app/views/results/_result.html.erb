@@ -1,19 +1,36 @@
 <div id="<%= dom_id(result) %>">
   <h2><%= result.title %></h2>
-  <p><strong>My input:</strong></p>
-  <p><%= result.user_input %></p>
 
-  <div class="row">
-    <div class="col col-lg-6">
+  <!-- User input -->
+
+  <div class="user-input rounded-3 p-3">
+    <div class="d-flex align-items-center">
+      <%= image_tag("user.svg", width: "24px", class:"p-1") %>
+      <h6><strong>Input</strong></h6>
+    </div>
+    <p><%= result.user_input %></p>
+  </div>
+
+  <!-- Fact check title  -->
+
+  <div class="d-flex align-items-center">
+    <%= image_tag("fact_check.svg", width: "24px", class:"p-1") %>
+    <h6><strong>Verifai's fact check</strong></h6>
+  </div>
+
+  <!-- Political bias and fact score  -->
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
       <div class="card-saved py-4">
-        <div class="row-card mt-0">
-          <h2>Political bias</h2>
-          <p class="tag"><%= result.political_bias %></p>
-          <%= image_tag("#{result.political_bias.downcase}.png", width: "300px", class:"p-2") %>
+        <h6>Political bias</h6>
+        <div class="position-relative d-flex justify-content-center">
+          <h6 class="political-bias position-absolute"><%= result.political_bias %></h6>
+          <%= image_tag("#{result.political_bias.downcase}.png", width: "80%", class:"p-2") %>
         </div>
       </div>
     </div>
-    <div class="col col-lg-6">
+    <div class="col">
       <div class="card-saved py-4">
         <div class="row-card mt-0">
           <h2>Credibility</h2>
@@ -21,16 +38,20 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="card-saved py-4">
-          <div class="row-card mt-0">
-            <h2>Explanation</h2>
-            <p class="tag"><%= result.summary %></p>
-          </div>
+  </div>
+
+  <!-- Summary  -->
+
+  <div class="row row-cols-1">
+    <div class="col">
+      <div class="card-saved py-4">
+        <div class="row-card mt-0">
+          <h2>Explanation</h2>
+          <p class="tag"><%= result.summary %></p>
         </div>
       </div>
     </div>
+
   </div>
 
   <div>
