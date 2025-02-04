@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def add_points_to_checker_score
     self.update(checker_score: self.checker_score + 5)
   end
+
+  def self.extension_user
+    User.first
+  end
 end

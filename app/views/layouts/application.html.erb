@@ -15,7 +15,7 @@
   <div class="d-flex">
     <!-- Show navbar if the user is signed in OR if the user is NOT on home, login, or registration pages -->
     <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions' && action_name == 'new') && !(controller_name == 'registrations' && action_name == 'new') %>
-      <%= render "shared/navbar" %> <!-- Navbar component -->
+      <%= render "shared/sidebar" %> <!-- Navbar component -->
     <% end %>
 
     <!-- Main Content -->

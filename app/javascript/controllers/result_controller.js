@@ -8,6 +8,19 @@ export default class extends Controller {
   compute(event) {
     event.preventDefault();
 
+     // Clear the full result target
+     this.fullResultTarget.innerHTML = "";
+
+     // Show the full result target
+     this.fullResultTarget.classList.remove("d-none");
+
+     // Insert the user input and a loader
+     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="box">
+                                                               <p><strong>My input:</strong></p>
+                                                               <p>${this.formTarget.querySelector("textarea").value}</p>
+                                                               <div class="loader1"></div>
+                                                             </div>`);
+
     // Call the Rails controller create action
     fetch(this.formTarget.action, {
       method: "POST",
@@ -23,18 +36,6 @@ export default class extends Controller {
       .then((data) => {
         console.log("Background job started:", data);
 
-        // Clear the full result target
-        this.fullResultTarget.innerHTML = "";
-
-        // Show the full result target
-        this.fullResultTarget.classList.remove("d-none");
-
-        // Insert the user input and a loader
-        this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="box">
-                                                                  <p><strong>My input:</strong></p>
-                                                                  <p>${data.user_input}</p>
-                                                                  <div class="loader1"></div>
-                                                                </div>`);
         // Show a flash message
         this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="alert alert-info alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
           Processing your request... Please wait.

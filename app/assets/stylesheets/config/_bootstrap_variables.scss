@@ -3,26 +3,30 @@
 // e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.2/components/navbar/#sass-variables
 // 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
 // 3. You can override them below!
+@import "config/spacing";
 
 // General style
-$font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$font-family-sans-serif: $font-family-base;
+$headings-font-family:   $font-family-base;
+$body-bg:                $background-base;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    #1a1a1a;
+$body-color: $text-base;
+$primary:    $text-base;
 $success:    $green;
 $info:       #334155;
 $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius-sm:            .0625rem;
-$border-radius:               .125rem;
-$border-radius-lg:            .25rem;
-$border-radius-xl:            .5rem;
-$border-radius-xxl:           1rem;
+$border-radius-sm: $radius-2;
+$border-radius: $radius-8;
+$border-radius-lg: .25rem;
+$border-radius-xl: .5rem;
+$border-radius-xxl: 1rem;
+
+$btn-padding-y: $spacing-8;
+$btn-padding-x: $spacing-16;
 
 // Override other variables below!

@@ -1,0 +1,170 @@
+// SIDEBAR VARIABLES
+// Sidebar colours - text
+$sidebar-foreground-base: #3F3F46;
+$sidebar-foreground-accent: #18181B;
+
+// Sidebar colours - background
+$sidebar-background-base: #FAFAFA;
+$sidebar-background-accent: #F4F4F5;
+
+
+.sidebar-container {
+  background-color: $sidebar-background-base;
+  display: flex;
+  width: 256px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sidebar-header {
+  background-color: $sidebar-background-base;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: start;
+  padding: $spacing-8;
+}
+.menu-button {
+  border-radius: 6px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  justify-content: start;
+  padding: $spacing-8;
+}
+.media-asset {
+  border-radius: 8px;
+  background-color: $sidebar-foreground-base;
+  align-self: stretch;
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  gap: $spacing-8;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: auto 0;
+  padding: 0 8px;
+}
+.img {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 16px;
+  align-self: stretch;
+  margin: auto 0;
+}
+.text-label {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  align-self: stretch;
+  white-space: nowrap;
+  flex: 1;
+  flex-basis: 16px;
+  margin: auto 0;
+  font-style: $font-style-base;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  line-height: $font-line-height-sm;
+}
+.text-label a {
+  color: $sidebar-foreground-base;
+  
+  &:hover {
+    color: $sidebar-foreground-accent;
+  }
+}
+.title {
+  font-weight: $font-weight-medium;
+  font-size: $font-size-lg;
+  color: $sidebar-foreground-accent;
+}
+.collapse-icon {
+  align-self: stretch;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin: auto 0;
+}
+.menu-group {
+  display: flex;
+  margin-top: $spacing-12;
+  width: 100%;
+  flex-direction: column;
+  justify-content: start;
+}
+.menu {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: start;
+}
+.menu-item {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  white-space: nowrap;
+  justify-content: start;
+  margin-bottom: $spacing-4;
+}
+
+.menu-button {
+  border-radius: $radius-6;
+  display: flex;
+  min-height: 32px;
+  width: 100%;
+  align-items: center;
+  gap: $spacing-8;
+  justify-content: start;
+  padding: $spacing-8;
+
+  &:hover {
+    background-color: $sidebar-background-accent;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 20px;
+  width: 100%;
+  flex: 1;
+  padding: 8px;
+}
+
+/* When navbar is present */
+.with-navbar .main-content {
+  padding: 20px;
+  max-width: calc(100% - 200px); /* Adjust width based on navbar */
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.with-navbar .devise-container {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* When navbar is NOT present (e.g., homepage for not-logged-in users) */
+.without-navbar {
+  margin-left: 0; /* Reset left margin */
+  padding: 20px; /* Keep padding */
+  min-width: 100%; /* Make it take full width */
+  overflow-y: auto;
+}
+
+/* Keep mobile adjustments */
+@media (max-width: 768px) {
+
+  .with-navbar .devise-container {
+    overflow-y: auto;
+  }
+
+  .without-navbar {
+    margin-left: 0;
+    overflow-y: auto;
+  }
+
+}
