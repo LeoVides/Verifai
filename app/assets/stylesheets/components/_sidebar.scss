@@ -68,6 +68,10 @@ $sidebar-background-accent: #F4F4F5;
   font-weight: $font-weight-normal;
   font-size: $font-size-base;
   line-height: $font-line-height-sm;
+
+  &:hover {
+    color: $sidebar-foreground-accent;
+  }
 }
 .title {
   font-weight: $font-weight-medium;
@@ -116,23 +120,27 @@ $sidebar-background-accent: #F4F4F5;
   gap: $spacing-8;
   justify-content: start;
   padding: $spacing-8;
-}
 
-.menu-button:hover {
-  border-radius: 6px;
-  background-color: $sidebar-background-accent;
-  display: flex;
-  min-height: 30px;
-  width: 100%;
-  align-items: center;
-  gap: 8px;
-  justify-content: start;
-  padding: $spacing-8;
-
-  .text-label {
-    color: $sidebar-foreground-accent;
+  &:hover {
+    background-color: $sidebar-background-accent;
   }
 }
+
+// .menu-button:hover {
+//   // border-radius: 6px;
+//   background-color: $sidebar-background-accent;
+//   // display: flex;
+//   // min-height: 30px;
+//   width: 100%;
+//   align-items: center;
+//   gap: 8px;
+//   justify-content: start;
+//   padding: $spacing-8;
+
+//   .text-label {
+//     color: $sidebar-foreground-accent;
+//   }
+// }
 
 .footer {
   display: flex;
