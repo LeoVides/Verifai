@@ -1,5 +1,54 @@
-// Define variables for your color scheme
+// COLOURS
+// Text colours
+$text-base: #18181B;
+$text-muted: #71717A;
+$text-accent: #18181B;
+$text-on-color: #FAFAFA;
 
+// Background colours
+$background-base: #FFFFFF;
+$background-accent: #F4F4F5;
+
+
+// Border colours
+$border-base: #E4E4E7;
+
+// GRAPHS
+// Political bias background colors
+$graph-background-far-left: #7F1D1D;
+$graph-background-left: #FCA5A5;
+$graph-background-center: #CBD5E1;
+$graph-background-right: #93C5FD;
+$graph-background-far-right: #1E3A8A;
+
+// Credibility background colors
+$graph-background-very-high: #0F172A;
+$graph-background-high: #334155;
+$graph-background-mixed: #475569;
+$graph-background-low: #94A3B8;
+$graph-background-very-low: #CBD5E1;
+
+// Graphs text colors
+$graph-foreground-on-high-contrast: $text-accent;
+$graph-foreground-on-low-contrast: $text-on-color;
+
+// BADGES
+// Backgroubd colours
+$badge-background-far-left: #FECACA;
+$badge-background-left: #FEE2E2;
+$badge-background-center: #F8FAFC;
+$badge-background-right: #DBEAFE;
+$badge-background-far-right: #BFDBFE;
+
+// Text colours
+$badge-foreground-far-left: #7F1D1D;
+$badge-foreground-left: #7F1D1D;
+$badge-foreground-center: #0F172A;
+$badge-foreground-right: #1E3A8A;
+$badge-foreground-far-right: #1E3A8A;
+
+
+// TO DELETE
 // For example:
 $red: #FD1015;
 $blue: #0D6EFD;
