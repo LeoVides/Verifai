@@ -1,4 +1,4 @@
-<%= render "/shared/top_bar", image: "telescope.svg" %>
+<%= render "/shared/top_bar", image: "telescope.svg", pageTitle: "Fact check" %>
 <div data-controller="result" class="search d-flex flex-column justify-content-between container result-container my-4">
   <%= turbo_stream_from dom_id(current_user) %>
   <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">

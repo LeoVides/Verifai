@@ -62,3 +62,12 @@
 .result-container .char-counter {
   font-size: 14px;
 }
+
+.result-container .other-sources p {
+  font-size: 14px;
+}
+
+.result-container .other-sources li::marker {
+  color: #71717A;
+  
+}

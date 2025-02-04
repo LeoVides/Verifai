@@ -64,16 +64,15 @@
 
   <!-- Other sources  -->
 
-  <div>
+  <div class="other-sources">
     <div class="d-flex">
       <%= image_tag("lightbulb.svg", width: "16px") %>
       <p class="ms-1"><strong>Read from other sources</strong></p>
     </div>
-    <ul class="list-unstyled d-flex py-2">
+    <ul>
       <% result.medias.each do |media| %>
-        <li class="px-3">
-          <p><%= media.political_bias %></p>
-          <a href="<%= media.url %>" target="_blank"><%= media.url %></a>
+        <li>
+          <p class="muted"><%= media.political_bias.capitalize %>: <a href="<%= media.url %>" target="_blank"><%= media.url %></a></p>
         </li>
       <% end %>
     </ul>

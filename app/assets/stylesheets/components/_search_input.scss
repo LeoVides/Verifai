@@ -109,6 +109,10 @@
   height: 40px;
   margin: auto 0;
   padding: 0 12px;
+  transition: opacity 0.3s ease-in-out;
+}
+.result-container .editor-button:hover {
+  opacity: 0.8;
 }
 .editor-button img {
   aspect-ratio: 1;
