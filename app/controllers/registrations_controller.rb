@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_user!
-  layout "application"  # Ensures Devise pages use the main layout
+  layout "application" # Ensures Devise pages use the main layout
 
   def remove_profile_picture
     if current_user.profile_picture.attached?
@@ -11,7 +11,4 @@ class RegistrationsController < Devise::RegistrationsController
     end
     redirect_to root_path
   end
-
-  protected
-
 end

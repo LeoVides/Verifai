@@ -1,0 +1,31 @@
+<h1>Insights</h1>
+
+<h2>My Own Results Insights</h2>
+
+<div class="chart-container">
+  <div class="chart-item">
+    <h3>Political Bias Distribution</h3>
+    <canvas data-controller="bar-chart" data-chart="<%= @user_political_bias_counts.to_json %>" data-chart-label="My Political Bias Distribution"></canvas>
+  </div>
+
+  <div class="chart-item">
+    <h3>Credibility Score Distribution</h3>
+    <canvas data-controller="bar-chart" data-chart="<%= @user_credibility_counts.to_json %>" data-chart-label="My Credibility Score Distribution"></canvas>
+  </div>
+</div>
+
+<hr>
+
+<h2>All Verifai Community Results Insights</h2>
+
+<div class="chart-container">
+  <div class="chart-item">
+    <h3>Political Bias Distribution</h3>
+    <canvas data-controller="bar-chart" data-chart="<%= @political_bias_counts.to_json %>" data-chart-label="Community Political Bias Distribution"></canvas>
+  </div>
+
+  <div class="chart-item">
+    <h3>Credibility Score Distribution</h3>
+    <canvas data-controller="bar-chart" data-chart="<%= @credibility_counts.to_json %>" data-chart-label="Community Credibility Score Distribution"></canvas>
+  </div>
+</div>
