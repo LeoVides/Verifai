@@ -22,7 +22,7 @@
               alt="Home"
               class="img"
             />
-            <div class="text-label"><%= link_to "Home", root_path , class: "nav-link" %></div>
+            <div class="text-label"><%= link_to "Home", root_path , class: "text-decoration-none" %></div>
           </div>
         </div>
         <div class="menu-item">
@@ -33,7 +33,7 @@
               alt="Fact check"
               class="img"
             />
-            <div class="text-label"><%= link_to "Fact check", results_path , class: "nav-link" %></div>
+            <div class="text-label"><%= link_to "Fact check", results_path , class: "text-decoration-none" %></div>
           </div>
         </div>
         <div class="menu-item">
@@ -44,7 +44,7 @@
               alt="History"
               class="img"
             />
-            <div class="text-label"><%= link_to "History", history_path, class: "nav-link" %></div>
+            <div class="text-label"><%= link_to "History", history_path, class: "text-decoration-none" %></div>
           </div>
         </div>
         <div class="menu-item">
@@ -55,7 +55,18 @@
               alt="Hot topics"
               class="img"
             />
-            <div class="text-label"><%= link_to "Hot topics", results_hot_topics_path , class: "nav-link" %></div>
+            <div class="text-label"><%= link_to "Hot topics", results_hot_topics_path , class: "text-decoration-none" %></div>
+          </div>
+        </div>
+           <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/1ab0550efd96d080bb5dc8483f2d627a983368d567f24b8ab0736bd5437f1731?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="Log out"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-decoration-none" %></div>
           </div>
         </div>
       </div>
