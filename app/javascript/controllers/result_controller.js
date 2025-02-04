@@ -36,7 +36,7 @@ export default class extends Controller {
                                                                   <div class="loader1"></div>
                                                                 </div>`);
         // Show a flash message
-        this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="alert alert-info" role="alert">
+        this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="alert alert-info alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
           Processing your request... Please wait.
         </div>`);
 

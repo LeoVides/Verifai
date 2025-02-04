@@ -1,5 +1,4 @@
-<div id="<%= dom_id(result) %>" class="container">
-  <h2><%= result.title %></h2>
+<div id="<%= dom_id(result) %>" class="container result-container my-4">
 
   <!-- User input -->
 
@@ -13,7 +12,7 @@
 
   <!-- Fact check title  -->
 
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center mt-4 fact-check-title">
     <%= image_tag("fact_check.svg", width: "24px", class:"p-1") %>
     <h6><strong>Verifai's fact check</strong></h6>
   </div>
@@ -27,7 +26,7 @@
         <p class="muted">The specific ideology or party this news favors</p>
         <div class="text-center position-relative d-flex justify-content-center">
           <h2 class="political-bias position-absolute"><strong><%= result.political_bias %></strong></h2>
-          <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.png", width: "60%", class:"p-2") %>
+          <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.svg", width: "60%", class:"p-2") %>
         </div>
       </div>
     </div>
@@ -60,7 +59,7 @@
 
   <!-- Summary  -->
 
-  <p class="tag"><%= result.summary %></p>
+  <p class="summary"><%= result.summary %></p>
 
   <!-- Other sources  -->
 
