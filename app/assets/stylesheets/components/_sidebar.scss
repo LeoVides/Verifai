@@ -143,15 +143,12 @@ $sidebar-background-accent: #F4F4F5;
 }
 
 .with-navbar .devise-container {
-  margin-left: clamp(200px, 15%, 500px); /* Ensures edit profile page is not hidden */
   padding: 20px;
-  max-width: calc(100% - 200px);
   overflow-y: auto;
 }
 
-
 /* When navbar is NOT present (e.g., homepage for not-logged-in users) */
-.without-navbar .main-content {
+.without-navbar {
   margin-left: 0; /* Reset left margin */
   padding: 20px; /* Keep padding */
   min-width: 100%; /* Make it take full width */
@@ -160,17 +157,12 @@ $sidebar-background-accent: #F4F4F5;
 
 /* Keep mobile adjustments */
 @media (max-width: 768px) {
-  .navbar-lewagon {
-    width: 200px; /* Fix navbar to 150px on small screens */
-  }
 
-  .with-navbar .main-content
   .with-navbar .devise-container {
-    margin-left: 200px;
     overflow-y: auto;
   }
 
-  .without-navbar .main-content {
+  .without-navbar {
     margin-left: 0;
     overflow-y: auto;
   }
