@@ -1,20 +1,21 @@
-<div id="<%= dom_id(result) %>" class="container result-container my-4">
+<div id="<%= dom_id(result) %>">
 
   <!-- User input -->
-
-  <div class="user-input rounded-3 p-3">
-    <div class="d-flex align-items-center">
-      <%= image_tag("user.svg", width: "24px", class:"p-1") %>
-      <h6><strong>Input</strong></h6>
+  <div class="d-flex justify-content-end">
+    <div class="user-input p-3">
+      <div class="d-flex align-items-center">
+        <%= image_tag("user.svg", width: "24px") %>
+        <h3>Input</h3>
+      </div>
+      <p><%= result.user_input %></p>
     </div>
-    <p><%= result.user_input %></p>
   </div>
 
   <!-- Fact check title  -->
 
   <div class="d-flex align-items-center mt-4 fact-check-title">
-    <%= image_tag("fact_check.svg", width: "24px", class:"p-1") %>
-    <h6><strong>Verifai's fact check</strong></h6>
+    <%= image_tag("fact_check.svg", width: "24px") %>
+    <h3>Verifai's fact check</h3>
   </div>
 
   <!-- Political bias and fact score  -->
@@ -66,20 +67,22 @@
   <div>
     <div class="d-flex">
       <%= image_tag("lightbulb.svg", width: "16px") %>
-      <strong>Read from other sources:</strong>
+      <p class="ms-1"><strong>Read from other sources</strong></p>
     </div>
     <ul class="list-unstyled d-flex py-2">
       <% result.medias.each do |media| %>
         <li class="px-3">
-          <strong><%= media.political_bias %>:</strong>
+          <p><%= media.political_bias %></p>
           <a href="<%= media.url %>" target="_blank"><%= media.url %></a>
         </li>
       <% end %>
     </ul>
   </div>
 
-  <div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
-    Success! You now have <%= result.user.checker_score %> checker points!
-    <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i>
-  </div>
+  <% unless controller_name == 'results' && action_name == 'show' %>
+    <div class="alert alert-success alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
+      Success! You now have <%= result.user.checker_score %> checker points!
+      <i class="fa-solid fa-thumbs-up fa-bounce fa-lg"></i>
+    </div>
+  <% end %>
 </div>

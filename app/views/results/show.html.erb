@@ -1,2 +1,4 @@
 <%= render "/shared/top_bar", image: "telescope.svg", title: @result.title, result: @result %>
-<%= render "results/result", result: @result %>
+<div class="container result-container my-4">
+  <%= render "results/result", result: @result %>
+</div>
