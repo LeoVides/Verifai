@@ -1,19 +1,19 @@
 .chart-container {
   display: flex;
   justify-content: center;
-  gap: 60px; /* Adds spacing between charts */
+  gap: 60px;
   flex-wrap: wrap; /* Ensures responsiveness on small screens */
 }
 
 .chart-item {
   flex: 1;
-  min-width: 300px; /* Ensures a reasonable minimum size */
-  max-width: 600px; /* Prevents charts from becoming too large */
+  min-width: 300px;
+  max-width: 600px;
   text-align: center;
 }
 
 canvas {
-  width: 100% !important;  /* Ensures the chart scales with the container */
-  height: 400px !important; /* Increased height for better visibility */
-  max-height: 500px !important; /* Prevents it from getting too tall */
+  width: 100% !important;
+  height: 400px !important;
+  max-height: 500px !important;
 }
