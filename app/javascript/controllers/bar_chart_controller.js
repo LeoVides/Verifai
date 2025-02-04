@@ -15,14 +15,11 @@ export default class extends Controller {
     // Get the data from the HTML element (Rails passes it as a JSON string)
     const chartData = JSON.parse(this.element.dataset.chart);
 
-    // Extract labels and values
     const labels = Object.keys(chartData);
     const data = Object.values(chartData);
 
-    // Determine the chart label dynamically
     const chartLabel = this.element.dataset.chartLabel || "Distribution";
 
-    // Define chart configuration
     const config = {
       type: "bar",
       data: {
@@ -48,7 +45,6 @@ export default class extends Controller {
       }
     };
 
-    // Create and store the chart instance
     this.chart = new Chart(this.element, config);
   }
 
