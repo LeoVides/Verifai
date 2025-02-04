@@ -59,7 +59,6 @@ $sidebar-background-accent: #F4F4F5;
   -webkit-line-clamp: 1;
   text-overflow: ellipsis;
   align-self: stretch;
-  color: $sidebar-foreground-base;
   white-space: nowrap;
   flex: 1;
   flex-basis: 16px;
@@ -68,7 +67,10 @@ $sidebar-background-accent: #F4F4F5;
   font-weight: $font-weight-normal;
   font-size: $font-size-base;
   line-height: $font-line-height-sm;
-
+}
+.text-label a {
+  color: $sidebar-foreground-base;
+  
   &:hover {
     color: $sidebar-foreground-accent;
   }
@@ -90,11 +92,7 @@ $sidebar-background-accent: #F4F4F5;
   margin-top: $spacing-12;
   width: 100%;
   flex-direction: column;
-  color: var(--base-sidebar-foreground, #3f3f46);
   justify-content: start;
-  // font: var(--font-weight-normal, 400)
-  //   var(--typography-base-sizes-small-font-size, 14px) / 1
-  //   var(--typography-font-family-font-sans, Inter);
 }
 .menu {
   display: flex;
@@ -125,22 +123,6 @@ $sidebar-background-accent: #F4F4F5;
     background-color: $sidebar-background-accent;
   }
 }
-
-// .menu-button:hover {
-//   // border-radius: 6px;
-//   background-color: $sidebar-background-accent;
-//   // display: flex;
-//   // min-height: 30px;
-//   width: 100%;
-//   align-items: center;
-//   gap: 8px;
-//   justify-content: start;
-//   padding: $spacing-8;
-
-//   .text-label {
-//     color: $sidebar-foreground-accent;
-//   }
-// }
 
 .footer {
   display: flex;
