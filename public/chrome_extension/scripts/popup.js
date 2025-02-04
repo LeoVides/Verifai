@@ -11,6 +11,13 @@ form.addEventListener('submit', (event) => {
   const userInput = textArea.value;
   console.log(userInput);
 
+  // Insert the user input and a loader
+  results.insertAdjacentHTML("beforeend", `<div class="box">
+                              <p><strong>My input:</strong></p>
+                              <p>${userInput}</p>
+                              <div class="loader1"></div>
+                            </div>`);
+
   fetch(form.action, {
     method: "POST",
     headers: { "Accept": "application/json" },

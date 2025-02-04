@@ -12,6 +12,6 @@ class User < ApplicationRecord
   end
 
   def self.extension_user
-    User.find_by(email: "alice.wonder@example.com") || User.create(username: 'alice_wonder', email: 'alice.wonder@example.com', password: 'alice.wonder@example.com')
+    User.first
   end
 end

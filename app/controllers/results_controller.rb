@@ -52,29 +52,21 @@ class ResultsController < ApplicationController
 
   def create
     # Conditional so we do not have to login in the plugin, so we assign a specific user to be the plugin_user
-    # user = request.format.json? ? User.extension_user : current_user
-    # @result = OpenAiCallJob.perform_later(result_params, user)
+    user = request.format.json? ? User.extension_user : current_user
+    @result = OpenAiCallJob.perform_now(result_params, user)
 
     respond_to do |format|
       format.json do
-        @result = OpenAiCallJob.perform_now(result_params, User.extension_user)
         render json: {
           message: "Processing started",
           user_input: result_params[:user_input],
           partial: render_to_string(partial: 'results/result', locals: { result: @result }, formats: [:html])
         }
       end
-      format.turbo_stream do
-        @result = OpenAiCallJob.perform_later(result_params, current_user)
-        render turbo_stream: turbo_stream.append(:results,
-          partial: "results/result",
-          locals: { result: @result }
-        )
-      end
     end
 
-  # rescue StandardError => e
-  #   render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
+  rescue StandardError => e
+    render json: { errors: ["Something went wrong: #{e.message}"] }, status: :internal_server_error
   end
 
   def hot_topics
