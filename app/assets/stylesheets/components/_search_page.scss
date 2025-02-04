@@ -11,9 +11,14 @@ p {
   margin-bottom: 0rem;
 }
 
-h6 {
+h2 {
   margin-top: 0rem;
   margin-bottom: 0rem;
+  font-size: 24px
+}
+
+.muted {
+  color: #71717A;
 }
 
 .user-input {
@@ -29,6 +34,16 @@ h6 {
 }
 
 .political-bias {
-  bottom: 20px;
-  right: 48%;
+  bottom: 20%;
+  left: 0px;
+  width: 100%;
+}
+
+.card {
+  border-radius: 8px !important;
+}
+
+.custom-progress {
+  margin-top: 8px;
+  --bs-progress-height: 40px;
 }

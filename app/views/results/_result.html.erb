@@ -1,4 +1,4 @@
-<div id="<%= dom_id(result) %>">
+<div id="<%= dom_id(result) %>" class="container">
   <h2><%= result.title %></h2>
 
   <!-- User input -->
@@ -22,19 +22,37 @@
 
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
-      <div class="card-saved py-4">
-        <h6>Political bias</h6>
-        <div class="position-relative d-flex justify-content-center">
-          <h6 class="political-bias position-absolute"><%= result.political_bias %></h6>
-          <%= image_tag("#{result.political_bias.downcase}.png", width: "80%", class:"p-2") %>
+      <div class="p-4 card bg-transparent shadow-sm rounded-3">
+        <h2>Political bias</h2>
+        <p class="muted">The specific ideology or party this news favors</p>
+        <div class="text-center position-relative d-flex justify-content-center">
+          <h2 class="political-bias position-absolute"><strong><%= result.political_bias %></strong></h2>
+          <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.png", width: "60%", class:"p-2") %>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card-saved py-4">
-        <div class="row-card mt-0">
-          <h2>Credibility</h2>
-          <p class="tag"><%= result.fact_score %></p>
+      <div class="p-4 card bg-transparent shadow-sm rounded-3 h-100 d-flex flex-column">
+        <h2>Credibility</h2>
+        <p class="muted">Accuracy and reliability of this news</p>
+        <div class="mt-auto">
+          <h2><strong><%= result.fact_score %></strong></h2>
+          <div class="progress custom-progress">
+            <% fact_score_value = 0 %>
+            <% case result.fact_score.downcase %>
+            <% when "very low" %>
+              <% fact_score_value = 10 %>
+            <% when "low" %>
+              <% fact_score_value = 30 %>
+            <% when "medium" %>
+              <% fact_score_value = 50 %>
+            <% when "high" %>
+              <% fact_score_value = 70 %>
+            <% when "very high" %>
+              <% fact_score_value = 90 %>
+            <% end %>
+            <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="<%= fact_score_value %>" aria-valuemin="0" aria-valuemax="100" data-controller="fact-score-bar"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -42,20 +60,15 @@
 
   <!-- Summary  -->
 
-  <div class="row row-cols-1">
-    <div class="col">
-      <div class="card-saved py-4">
-        <div class="row-card mt-0">
-          <h2>Explanation</h2>
-          <p class="tag"><%= result.summary %></p>
-        </div>
-      </div>
-    </div>
+  <p class="tag"><%= result.summary %></p>
 
-  </div>
+  <!-- Other sources  -->
 
   <div>
-    <strong>Read from other sources:</strong>
+    <div class="d-flex">
+      <%= image_tag("lightbulb.svg", width: "16px") %>
+      <strong>Read from other sources:</strong>
+    </div>
     <ul class="list-unstyled d-flex py-2">
       <% result.medias.each do |media| %>
         <li class="px-3">
