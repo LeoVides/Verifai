@@ -112,7 +112,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'Very-low',
+  fact_score: 'Very low',
   political_bias: "Far-right",
   source_media: 'Infowars',
   user_input: 'Climate change is a myth created by China to destabilize the West.',
@@ -139,7 +139,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'Very-high',
+  fact_score: 'Very high',
   political_bias: "Center",
   source_media: 'Associated Press',
   user_input: 'NASA’s Artemis program aims to land astronauts on the moon by 2025.',
@@ -148,7 +148,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: 'Very-low',
+  fact_score: 'Very low',
   political_bias: "Left",
   source_media: 'MSNBC',
   user_input: 'The US military budget could singlehandedly end world poverty.',
@@ -220,7 +220,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-low",
+  fact_score: "Very low",
   political_bias: "Far-right",
   source_media: sources.sample,
   user_input: "Renewable energy is a scam pushed by the government to control the market.",
@@ -229,7 +229,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-high",
+  fact_score: "Very high",
   political_bias: "Center",
   source_media: sources.sample,
   user_input: "Free markets drive innovation and economic growth better than regulations.",
@@ -265,7 +265,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-high",
+  fact_score: "Very high",
   political_bias: "Left",
   source_media: sources.sample,
   user_input: "Climate change is an existential crisis that requires immediate action.",
@@ -292,7 +292,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-low",
+  fact_score: "Very low",
   political_bias: "Far-left",
   source_media: sources.sample,
   user_input: "Public education is underfunded due to government priorities favoring corporations.",
@@ -328,7 +328,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-high",
+  fact_score: "Very high",
   political_bias: "Left",
   source_media: sources.sample,
   user_input: "Socialism would destroy the American economy and individual freedoms.",
@@ -346,7 +346,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-low",
+  fact_score: "Very low",
   political_bias: "Far-right",
   source_media: sources.sample,
   user_input: "The Federal Reserve intentionally manipulates inflation for elite interests.",
@@ -391,7 +391,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-high",
+  fact_score: "Very high",
   political_bias: "Center",
   source_media: sources.sample,
   user_input: "The Green New Deal would bankrupt the economy and increase poverty.",
@@ -418,7 +418,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-low",
+  fact_score: "Very low",
   political_bias: "Far-right",
   source_media: sources.sample,
   user_input: "The COVID-19 pandemic was exaggerated to control the population.",
@@ -436,7 +436,7 @@ Result.create(
 )
 
 Result.create(
-  fact_score: "Very-high",
+  fact_score: "Very high",
   political_bias: "Center",
   source_media: sources.sample,
   user_input: "Corporate tax rates should be lowered to promote business investment.",

@@ -1,0 +1,19 @@
+.chart-container {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap; /* Ensures responsiveness on small screens */
+}
+
+.chart-item {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  text-align: center;
+}
+
+canvas {
+  width: 100% !important;
+  height: 400px !important;
+  max-height: 500px !important;
+}
