@@ -37,20 +37,3 @@ $font-letter-spacing-tight: -0.25rem; // -0.4px
 $font-letter-spacing-normal: 0; // 0px
 $font-letter-spacing-wide: 0.25rem; // 0.4px
 $font-letter-spacing-wider: 0.5rem; // 0.8px
-
-
-
-// TO DELETE
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
-
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
