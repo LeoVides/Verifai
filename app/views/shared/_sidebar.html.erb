@@ -1,0 +1,103 @@
+<div class="sidebar-container">
+  <div class="sidebar-header">
+    <div class="menu-button">
+      <div class="media-asset">
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/a76fe4ca5a40e5bc45399d5c73164dfee73f5f129c8be58e79d46436bad83e03?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+          alt="Logo"
+          class="img"
+        />
+      </div>
+      <div class="text-label">Verifai</div>
+      <div class="collapse-icon"></div>
+    </div>
+    <div class="menu-group">
+      <div class="menu">
+        <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/666aa7c7040571c3f77075a41f3de1643f79e08f18dfb4f47e35ecc6c84ab967?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="Home"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "Home", root_path , class: "text-decoration-none" %></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/1ab0550efd96d080bb5dc8483f2d627a983368d567f24b8ab0736bd5437f1731?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="Fact check"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "Fact check", results_path , class: "text-decoration-none" %></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/53a4e4c09313ae73aa25a2b228df9bc4ff3da09a03347baab9d77f9508b9f5d0?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="History"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "History", history_path, class: "text-decoration-none" %></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/55b6604ccb0f62f54d785b2c85cea2c0c93f6c434ac874d9ae615ba2a084478b?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="Hot topics"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "Hot topics", results_hot_topics_path , class: "text-decoration-none" %></div>
+          </div>
+        </div>
+           <div class="menu-item">
+          <div class="menu-button">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/1ab0550efd96d080bb5dc8483f2d627a983368d567f24b8ab0736bd5437f1731?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
+              alt="Log out"
+              class="img"
+            />
+            <div class="text-label"><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-decoration-none" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <% if user_signed_in? %>
+        <div class="avatar-wrapper d-flex align-items-center">
+          <a href="#" class="avatar hidden position-relative">
+            <% if current_user.profile_picture.attached? %>
+              <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>
+            <% else %>
+               <img src="https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+                      alt="Placeholder Avatar"
+                      class="avatar-placeholder-picture"
+                      style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            <% end %>
+            <!-- Badge system  -->
+            <div class="checker-points position-absolute bottom-0 end-0">
+              <% if current_user.checker_score >= 30 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: gold;"></i>
+                <% elsif current_user.checker_score >= 15 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: silver;"></i>
+                <% elsif current_user.checker_score >= 5 %>
+                <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: #cd8031;"></i>
+              <% end %>
+            </div>
+            <!-- Badge system end  -->
+          </a>
+          <%= link_to current_user.username, edit_user_registration_path , class: "profile-text ms-3 hidden" %>
+        </div>
+      <% end %>
+  </div>
+</div>

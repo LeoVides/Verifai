@@ -1,5 +1,40 @@
-<div class="devise container">
-  <% @groups.first(10).select { |key, values| values.size >= 3 }.each do |key, values| %>
-    <p><%= "Group for '#{key.text}': #{values.size}" %></p>
-  <% end %>
+<div class="container">
+
+  <% visible_groups = @groups.first(10).select { |key, values| values.size >= 3 } %>
+
+  <div class="hot-topics-card">
+    <div class="header">
+      <div class="header-title">Hot topics</div>
+      <div class="header-subtitle">The most searched news articles across Verifai</div>
+    </div>
+    <div class="topics-table-wrapper">
+      <div class="topics-table">
+        <div class="table-row-group">
+
+          <!-- Topic Column -->
+          <div class="topics-column">
+            <div class="column-header">Topic</div>
+
+            <% visible_groups.each do |key, values| %>
+              <div class="topic-cell">
+                <div class="topic-text"><%= key.text %></div>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Searches Column -->
+          <div class="searches-column">
+            <div class="searches-header">Searches</div>
+
+            <% visible_groups.each do |key, values| %>
+              <div class="search-cell">
+                <%= values.size %>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
