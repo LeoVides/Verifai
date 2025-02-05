@@ -82,6 +82,12 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+#speech_button:hover {
+  background-color: #F4F4F5 ;
+  border-radius: 6px;
+}
+
 @media (max-width: 991px) {
   .editor-footer {
     max-width: 100%;
