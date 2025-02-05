@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Verifai</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,17 +19,27 @@
   </head>
 
 <body class="<%= user_signed_in? ? 'with-navbar' : 'without-navbar' %>">
-  <div class="d-flex">
-    <!-- Show navbar if the user is signed in OR if the user is NOT on home, login, or registration pages -->
-    <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions' && action_name == 'new') && !(controller_name == 'registrations' && action_name == 'new') %>
-      <%= render "shared/sidebar" %> <!-- Navbar component -->
-    <% end %>
+  <div data-controller="sidebar">
+    <!-- Header with the hamburger button -->
+    <header class="header">
+      <button class="hamburger d-flex justify-content-start" data-action="click->sidebar#toggle">
+        ☰
+      </button>
+    </header>
 
-    <!-- Main Content -->
-    <div class="wrapper">
-      <div class="main-content flex-grow-1">
-        <%= render "shared/flashes" %>
-        <%= yield %> <!-- Content of the current page -->
+    <!-- Main container with sidebar and content -->
+    <div class="d-flex">
+      <!-- Sidebar rendered only for logged-in users or as defined -->
+      <% if user_signed_in? || !(controller_name == 'pages' && action_name == 'home') && !(controller_name == 'sessions' && action_name == 'new') && !(controller_name == 'registrations' && action_name == 'new') %>
+        <%= render "shared/sidebar" %> <!-- Ensure that the outer element in this partial does NOT have its own conflicting data-controller -->
+      <% end %>
+
+      <!-- Main Content -->
+      <div class="wrapper">
+        <div class="main-content flex-grow-1">
+          <%= render "shared/flashes" %>
+          <%= yield %> <!-- Content of the current page -->
+        </div>
       </div>
     </div>
   </div>

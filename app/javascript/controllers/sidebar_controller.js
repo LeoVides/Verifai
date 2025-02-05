@@ -3,6 +3,11 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["menuItem"];
 
+  toggle() {
+    console.log("Toggle method called!");
+    this.element.querySelector('.sidebar-container')?.classList.toggle("open");
+  }
+
   connect() {
     this.setActiveItem();
   }

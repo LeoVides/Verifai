@@ -4,7 +4,7 @@
   <div class="d-flex justify-content-end">
     <div class="user-input p-3">
       <div class="d-flex align-items-center">
-        <%= image_tag("user.svg", width: "24px") %>
+        <%= image_tag("user.svg", width: "24px", id: "user-vector") %>
         <h3>Input</h3>
       </div>
       <p><%= result.user_input %></p>
@@ -14,7 +14,7 @@
   <!-- Fact check title  -->
 
   <div class="d-flex align-items-center mt-4 fact-check-title">
-    <%= image_tag("fact_check.svg", width: "24px") %>
+    <%= image_tag("fact_check.svg", width: "24px", id: "fact-vector") %>
     <h3>Verifai's fact check</h3>
   </div>
 
@@ -26,8 +26,8 @@
         <h2>Political bias</h2>
         <p class="muted">The specific ideology or party this news favors</p>
         <div class="text-center position-relative d-flex justify-content-center">
-          <h2 class="political-bias position-absolute"><b><%= result.political_bias %></b></h2>
-          <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.svg", width: "60%", class:"p-2") %>
+          <h2 class="political-bias position-absolute"><strong id="bias-result"><%= result.political_bias %></strong></h2>
+          <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.svg", width: "60%", class:"p-2", id: "bias-vector") %>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
 
   <div class="other-sources">
     <div class="d-flex">
-      <%= image_tag("lightbulb.svg", width: "16px") %>
+      <%= image_tag("lightbulb.svg", width: "16px", id: "bulb-vector") %>
       <p class="ms-1"><strong>Read from other sources</strong></p>
     </div>
     <ul>
