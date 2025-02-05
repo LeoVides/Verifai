@@ -19,9 +19,11 @@
     <% end %>
 
     <!-- Main Content -->
-    <div class="main-content flex-grow-1">
-      <%= render "shared/flashes" %>
-      <%= yield %> <!-- Content of the current page -->
+    <div class="wrapper">
+      <div class="main-content flex-grow-1">
+        <%= render "shared/flashes" %>
+        <%= yield %> <!-- Content of the current page -->
+      </div>
     </div>
   </div>
 </body>
