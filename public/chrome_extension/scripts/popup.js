@@ -37,7 +37,7 @@ function getResults(userInput) {
   fetch(form.action, {
     method: "POST",
     mode: "no-cors",
-    headers: { "Accept": "application/json" },
+    headers: { "Accept": "application/json", "X-Requested-By": "ChromeExtension" },
     body: new FormData(form)
   })
     .then(response => response.json())

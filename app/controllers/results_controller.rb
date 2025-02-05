@@ -56,8 +56,9 @@ class ResultsController < ApplicationController
   end
 
   def create
+
     # Conditional so we do not have to login in the plugin, so we assign a specific user to be the plugin_user
-    user = request.format.json? ? User.extension_user : current_user
+    user = request.headers["X-Requested-By"] == "ChromeExtension" ? User.extension_user : current_user
     @result = OpenAiCallJob.perform_now(result_params, user)
 
     respond_to do |format|
