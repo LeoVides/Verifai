@@ -46,7 +46,6 @@ export default class extends Controller {
   }
 
   adjustHeight() {
-    console.log(this.inputTarget.style.height)
     this.inputTarget.style.height = "auto"; // Reset height
     this.inputTarget.style.height = this.inputTarget.scrollHeight + "px"; // Set new height
   }
