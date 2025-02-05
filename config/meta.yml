@@ -1,0 +1,5 @@
+# config/meta.yml
+meta_product_name: "Verifai"
+meta_title: "Verifai – The cutting-edge AI-powered fact-checking tool"
+meta_description: "The cutting-edge AI-powered fact-checking tool that helps you verify information quickly and accurately, ensuring you stay informed with reliable and trustworthy sources. 🚀"
+meta_image: "app-icon.png" # should exist in `app/assets/images/`
