@@ -1,6 +1,7 @@
-<div class="sidebar-container">
+<div class="sidebar-container" data-controller="sidebar">
   <div class="sidebar-header">
-    <div class="menu-button">
+    <%= link_to root_path, class: "menu-button text-decoration-none",
+        data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: root_path } do %>
       <div class="media-asset">
         <img
           loading="lazy"
@@ -9,61 +10,45 @@
           class="img"
         />
       </div>
-      <div class="text-label title"><%= link_to "Verifai", root_path , class: "text-decoration-none" %></div>
-      <div class="collapse-icon"></div>
-    </div>
+      <div class="text-label title">Verifai</div>
+    <% end %>
     <div class="menu-group">
       <div class="menu">
         <div class="menu-item">
-          <%= link_to results_path, class: "menu-button text-decoration-none" do %>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/1ab0550efd96d080bb5dc8483f2d627a983368d567f24b8ab0736bd5437f1731?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-              alt="Fact check"
-              class="img"
-            />
+          <%= link_to results_path, class: "menu-button text-decoration-none",
+              data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: results_path } do %>
+            <%= image_tag("telescope.svg", alt: "Fact check icon") %>
             <div class="text-label">Fact check</div>
           <% end %>
         </div>
         <div class="menu-item">
-          <%= link_to history_path, class: "menu-button text-decoration-none" do %>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/53a4e4c09313ae73aa25a2b228df9bc4ff3da09a03347baab9d77f9508b9f5d0?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-              alt="History"
-              class="img"
-            />
+          <%= link_to history_path, class: "menu-button text-decoration-none",
+              data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: history_path } do %>
+            <%= image_tag("history.svg", alt: "History icon") %>
             <div class="text-label">History</div>
           <% end %>
         </div>
         <div class="menu-item">
-          <%= link_to results_hot_topics_path, class: "menu-button text-decoration-none" do %>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/55b6604ccb0f62f54d785b2c85cea2c0c93f6c434ac874d9ae615ba2a084478b?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-              alt="Hot topics"
-              class="img"
-            />
+          <%= link_to results_hot_topics_path, class: "menu-button text-decoration-none",
+              data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: results_hot_topics_path } do %>
+            <%= image_tag("hot_topics.svg", alt: "Hot topics icon") %>
             <div class="text-label">Hot topics</div>
           <% end %>
         </div>
         <div class="menu-item">
-          <div class="menu-button">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/55b6604ccb0f62f54d785b2c85cea2c0c93f6c434ac874d9ae615ba2a084478b?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-              alt="Insights"
-              class="img"
-            />
-            <div class="text-label"><%= link_to "Insights", insights_path , class: "text-decoration-none" %></div>
-          </div>
+          <%= link_to insights_path, class: "menu-button text-decoration-none",
+              data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: insights_path } do %>
+            <%= image_tag("insights.svg", alt: "Insights icon") %>
+            <div class="text-label">Insights</div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
   <div class="footer">
     <% if user_signed_in? %>
-      <%= link_to edit_user_registration_path, class: "avatar-wrapper d-flex align-items-center text-decoration-none" do %>
+      <%= link_to edit_user_registration_path, class: "avatar-wrapper d-flex align-items-center text-decoration-none",
+          data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: edit_user_registration_path } do %>
         <div class="avatar hidden position-relative">
           <% if current_user.profile_picture.attached? %>
             <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>

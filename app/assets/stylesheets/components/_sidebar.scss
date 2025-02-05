@@ -70,7 +70,7 @@ $sidebar-background-accent: #F4F4F5;
 }
 .text-label a {
   color: $sidebar-foreground-base;
-  
+
   &:hover {
     color: $sidebar-foreground-accent;
   }
@@ -80,13 +80,7 @@ $sidebar-background-accent: #F4F4F5;
   font-size: $font-size-lg;
   color: $sidebar-foreground-accent;
 }
-.collapse-icon {
-  align-self: stretch;
-  display: flex;
-  width: 16px;
-  height: 16px;
-  margin: auto 0;
-}
+
 .menu-group {
   display: flex;
   margin-top: $spacing-12;
@@ -122,6 +116,10 @@ $sidebar-background-accent: #F4F4F5;
   &:hover {
     background-color: $sidebar-background-accent;
   }
+}
+
+.active {
+  background-color: $sidebar-background-accent !important;
 }
 
 .footer {

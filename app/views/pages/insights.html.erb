@@ -1,15 +1,128 @@
-<h1>Insights</h1>
+<%= render "/shared/top_bar", image: "insights.svg", pageTitle: "Insights" %>
 
-<h2>My Own Results Insights</h2>
+<p class="mb-4">An analysis based on your fact checks</p>
 
-<div class="chart-container">
-  <div class="chart-item">
-    <h3>Political Bias Distribution</h3>
-    <canvas data-controller="bar-chart" data-chart="<%= @user_political_bias_counts.to_json %>" data-chart-label="My Political Bias Distribution"></canvas>
-  </div>
+<div class="container mt-4">
+  <div class="row g-4">
 
-  <div class="chart-item">
-    <h3>Credibility Score Distribution</h3>
-    <canvas data-controller="bar-chart" data-chart="<%= @user_credibility_counts.to_json %>" data-chart-label="My Credibility Score Distribution"></canvas>
+    <div class="col-md-12">
+      <div class="card border-light p-4 rounded-4 shadow-sm text-center">
+        <h2 class="mb-3">Your Fact Checker Level</h2>
+
+        <!-- Level Badge -->
+        <div class="position-relative">
+          <div class="position-absolute bottom-0 end-0">
+            <% if current_user.checker_score >= 30 %>
+              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: gold;"></i>
+            <% elsif current_user.checker_score >= 15 %>
+              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: silver;"></i>
+            <% elsif current_user.checker_score >= 5 %>
+              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: #cd8031;"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <% next_level = if current_user.checker_score >= 30
+        "Max Level"
+        elsif current_user.checker_score >= 15
+          30
+        elsif current_user.checker_score >= 5
+          15
+        else
+          5
+        end
+        %>
+
+        <% progress_percentage = if next_level.is_a?(String) || next_level.to_f.zero?
+          100
+        else
+          [((current_user.checker_score.to_f / next_level.to_f) * 100).to_i, 100].min
+        end
+        %>
+
+        <p class="mt-3">
+          Progress towards <strong><%= next_level == "Max Level" ? "Master Fact Checker" : "Level #{next_level}" %></strong>
+        </p>
+
+        <div class="progress" style="height: 25px;">
+          <div class="progress-bar
+            <%= current_user.checker_score >= 30 ? 'bg-warning' : current_user.checker_score >= 15 ? 'bg-secondary' : 'bg-primary' %>"
+            role="progressbar"
+            style="width: <%= progress_percentage %>%; font-weight: bold;"
+            aria-valuenow="<%= progress_percentage %>"
+            aria-valuemin="0"
+            aria-valuemax="100">
+            <%= progress_percentage %>%
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="row g-4 mt-3">
+
+        <div class="col-md-6">
+          <div class="card border-light p-4 rounded-4 shadow-sm text-center">
+            <h2 class="mb-2">Political Bias Distribution</h2>
+            <% most_frequent_bias = @user_political_bias_counts.max_by { |_, count| count }&.first.downcase || "unknown" %>
+            <p>My most frequently fact-checked articles are from the <strong><%= most_frequent_bias %></strong></p>
+
+            <canvas class="chart-text" data-controller="bar-chart"
+              data-chart="<%= @user_political_bias_counts.to_json %>"
+              data-chart-label="My Political Bias Distribution"></canvas>
+
+
+            <hr class="my-3 text-muted">
+
+            <!-- Most & Least Read Section -->
+            <% most_read_source = @user_political_bias_counts.max_by { |_, count| count }&.first || "unknown" %>
+            <% least_read_source = @user_political_bias_counts.min_by { |_, count| count }&.first || "unknown" %>
+
+            <div class="row mt-3">
+              <div class="col-6 text-start border-end">
+                <p class="text-muted">Most Read</p>
+                <h1><%= most_read_source %></h1>
+              </div>
+              <div class="col-6 text-end">
+                <p class="text-muted">Least Read</p>
+                <h1><%= least_read_source %></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card border-light p-4 rounded-4 shadow-sm text-center">
+            <h2 class="mb-2">Credibility Score Distribution</h2>
+            <% most_frequent_credibility = @user_credibility_counts.max_by { |_, count| count }&.first.downcase || "unknown" %>
+            <p>The credibility of my most frequently fact-checked articles is <strong><%= most_frequent_credibility %></strong></p>
+
+            <canvas class="chart-text" data-controller="bar-chart"
+              data-chart="<%= @user_credibility_counts.to_json %>"
+              data-chart-label="My Credibility Score Distribution"></canvas>
+
+            <hr class="my-3 text-muted">
+
+            <% most_read_credibility = @user_credibility_counts.max_by { |_, count| count }&.first || "unknown" %>
+            <% least_read_credibility = @user_credibility_counts.min_by { |_, count| count }&.first || "unknown" %>
+
+            <div class="row mt-3">
+              <div class="col-6 text-start border-end">
+                <p class="text-muted">Most Read</p>
+                <h1><%= most_read_credibility %></h1>
+              </div>
+              <div class="col-6 text-end">
+                <p class="text-muted">Least Read</p>
+                <h1><%= least_read_credibility %></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </div>

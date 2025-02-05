@@ -5,12 +5,28 @@ $text-muted: #71717A;
 $text-accent: #18181B;
 $text-on-color: #FAFAFA;
 
+// To use, for example on toasts, banners, etc
+$text-success: #166534;
+$text-danger: #991B1B;
+$text-warning: #854D0E;
+$text-info: #1E40AF;
+
+
 // Background colours
 $background-base: #FFFFFF;
 $background-accent: #F4F4F5;
+$background-success: #F0FDF4;
+$background-danger: #FEF2F2;
+$background-warning: #FEFCE8;
+$background-info: #EFF6FF;
+
 
 // Border colours
 $border-base: #E4E4E7;
+$border-success: #166534;
+$border-danger: #991B1B;
+$border-warning: #854D0E;
+$border-info: #1E40AF;
 
 // GRAPHS
 // Political bias background colors
@@ -45,14 +61,3 @@ $badge-foreground-left: #7F1D1D;
 $badge-foreground-center: #0F172A;
 $badge-foreground-right: #1E3A8A;
 $badge-foreground-far-right: #1E3A8A;
-
-
-// TO DELETE
-// For example:
-$red: #FD1015;
-$blue: #0D6EFD;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
