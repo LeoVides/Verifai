@@ -44,7 +44,7 @@ class OpenAiCallJob < ApplicationJob
       result.medias.each do |media|
         media.save
       end
-      puts "Result id #{result.id} : #{result.title} created successfully with medias #{result.medias.map(&:url)}"
+      puts "Result id #{result.id} : #{result.title} created successfully with medias #{result.medias.map(&:url)}, broadcasting to user_#{result.user.id}"
 
       # Broadcast the update via Turbo Streams
       Turbo::StreamsChannel.broadcast_update_to(

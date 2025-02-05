@@ -1,26 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["input"];
-  static values = {
-    feedbackText: String
-  }
+  static values = { url: String } // Store the URL as a data attribute
 
-  copy(event) {
-    // Select the input value and copy it to clipboard
-    this.inputTarget.select();
-    document.execCommand('copy');
-
-    // Disable the button and change the text to feedbackText
-    event.currentTarget.disabled = true;
-    event.currentTarget.innerText = this.feedbackTextValue;
-    const target = event.currentTarget
-
-    setTimeout(function() {
-      // Use the captured event object here
-      console.log('Captured Event:', target);
-      target.disabled = false
-      target.innerHTML = '<i class="fas fa-paper-plane"></i>'
-    }, 2000);
+  copy() {
+    navigator.clipboard.writeText(this.urlValue)
+      .then(() => {
+        console.log(this.eventTarget);
+        document.querySelector("#top-bar").insertAdjacentHTML("beforeend", `<div class="alert alert-info alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">
+          URL copied to clipboard!
+        </div>`);
+      })
+      .catch(err => console.error("Failed to copy URL:", err));
   }
 }

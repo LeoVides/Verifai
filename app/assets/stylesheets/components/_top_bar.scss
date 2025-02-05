@@ -1,0 +1,21 @@
+#top-bar a {
+  text-decoration: none;
+}
+
+#top-bar .delete,
+#top-bar .share {
+  transition: opacity 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out;
+}
+
+#top-bar .share:hover {
+  opacity: 0.8;
+}
+
+#top-bar .share {
+  cursor: pointer;
+}
+
+#top-bar .delete:hover {
+  filter: brightness(80%);
+}

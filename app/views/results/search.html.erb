@@ -1,22 +1,58 @@
-<div data-controller="result" class="container search">
-  <h1>Fact Check</h1>
+<%= render "/shared/top_bar", image: "telescope.svg" %>
+<div data-controller="result" class="search d-flex flex-column justify-content-between">
   <%= turbo_stream_from dom_id(current_user) %>
   <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">
     <!-- This section will show the loading spinner and be replaced by the final result -->
   </div>
 
-  <div>
+  <div class="fact-check-container">
+    <!-- Header -->
+    <div class="fact-check-header">What would you like to fact-check today?</div>
+
     <%= simple_form_for(@result, data: { result_target: "form", action: "submit->result#compute" }) do |f| %>
-      <div class="position-relative">
+
+      <!-- Hidden Label for Accessibility -->
+      <label for="fact-check-input" class="visually-hidden">What would you like to fact-check today?</label>
+
+      <!-- Fact Check Editor Container -->
+      <div class="fact-check-editor">
         <%= f.input :user_input, label: false,
-            input_html: { class: "form-control input-with-button", placeholder: "Enter the text to analyze here (50 to 5000 characters)",
-            id: "user_input", rows: 5,
-            data: { controller: "char-counter", action: "input->char-counter#count", char_counter_target: "input" } }
+            as: :text,
+            input_html: {
+              class: "form-control input-with-button editor-placeholder",
+              placeholder: "Enter the text to analyze here (50 to 5000 characters)",
+              id: "fact-check-input",
+              rows: 5,
+              data: {
+                controller: "char-counter",
+                action: "input->char-counter#count",
+                char_counter_target: "input"
+              }
+            }
           %>
 
-        <%= f.button :submit, "Check", class: "btn btn-primary send-button", data: {result_target: "button"} %>
+        <!-- Footer with Images & Submit Button -->
+        <div class="editor-footer">
+          <img loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/0d1388ab8f384bb9b1f1f3cdba44a44c/22ffa446369ece0ff970ebf691e0fab85eb4189fe73bf59a45792bca2c6cefc9?apiKey=0d1388ab8f384bb9b1f1f3cdba44a44c&"
+              alt="First fact check related image" />
+
+          <!-- Custom Button for Submission -->
+          <button type="submit" class="editor-button" data-result-target="button">
+            <img loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/0d1388ab8f384bb9b1f1f3cdba44a44c/49a2a5c6ca787ad73d60dee99b0f340e2be72c3f59a69eb09e08640e28f8ab5f?apiKey=0d1388ab8f384bb9b1f1f3cdba44a44c&"
+                alt="Submit button icon" />
+          </button>
+        </div>
       </div>
-      <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
+
+      <!-- Character Counter -->
+      <p>
+        <span id="char-count">0</span> / 5000 characters
+        <i id="char-count-icn" class="fa-solid fa-check d-none"></i>
+      </p>
+
     <% end %>
   </div>
+
 </div>

@@ -1,21 +1,55 @@
-.search {
-  margin-top: 9px;
-  height: calc(100vh - 75px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-  min-height: unset !important;
-}
-
-.search p {
-  margin-top: 0.5rem;
+.result-container p {
+  margin-top: 0rem;
   margin-bottom: 0rem;
 }
 
-.search .layout {
+.result-container h2 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  font-size: 24px
+}
+
+.result-container h6 {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+.result-container .muted {
+  color: #71717A;
+}
+
+.result-container .user-input {
+  background-color: #f4f4f5;
+  width: 60%;
+}
+
+.result-container .search .layout {
   height: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.result-container .political-bias {
+  bottom: 20%;
+  left: 0px;
+  width: 100%;
+}
+
+.result-container .card {
+  border-radius: 8px !important;
+}
+
+.result-container .custom-progress {
+  margin-top: 8px;
+  --bs-progress-height: 40px;
+}
+
+.result-container .fact-check-title {
+  margin-bottom: 16px;
+}
+
+.result-container .summary {
+  margin-top: 16px;
+  margin-bottom: 20px
 }
