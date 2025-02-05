@@ -5,26 +5,42 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
     <div class="pop-up-container">
-      <h1>Fact check</h1>
+      <div class="fact-check-header">What would you like to fact-check today?</div>
 
-      <div id="results"></div>
+      <!-- Resuls will be displayed here -->
+      <div id="results" class="layout result-container container"></div>
 
-      <div class="container search">
+      <!-- Fact Check Editor Container -->
+      <div class="fact-check-editor">
+
         <!-- To try locally, change the from action="http://localhost:3000/results" -->
         <form method="post" id="search-form" action="https://www.verifai.site/results">
           <div class="position-relative">
             <textarea name="result[user_input]" type="text" id="user_input" class="form-control input-with-button" placeholder="Enter the text to analyze here (50 to 5000 characters)" rows="5"></textarea>
-            <button id="send-data" type="submit" class="btn btn-primary send-button">Check</button>
+
+            <!-- Footer with Images & Submit Button -->
+            <div class="editor-footer">
+              <img loading="lazy"
+                  src="https://cdn.builder.io/api/v1/image/assets/0d1388ab8f384bb9b1f1f3cdba44a44c/22ffa446369ece0ff970ebf691e0fab85eb4189fe73bf59a45792bca2c6cefc9?apiKey=0d1388ab8f384bb9b1f1f3cdba44a44c&"
+                  alt="First fact check related image" />
+
+              <!-- Custom Button for Submission -->
+              <button id="send-data" type="submit" class="editor-button">
+                <img loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/0d1388ab8f384bb9b1f1f3cdba44a44c/49a2a5c6ca787ad73d60dee99b0f340e2be72c3f59a69eb09e08640e28f8ab5f?apiKey=0d1388ab8f384bb9b1f1f3cdba44a44c&"
+                alt="Submit button icon" />
+              </button>
+            </div>
           </div>
           <p><span id="char-count">0</span> / 5000 characters <i id="char-count-icn" class="fa-solid fa-check d-none"></i></p>
         </form>
       </div>
 
     </div>
-    <script type="text/javascript" src="../scripts/popup.js"></script>
+    <script type="module" src="../scripts/popup.js"></script>
   </body>
 </html>
