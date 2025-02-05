@@ -1,19 +1,25 @@
-.chart-container {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap; /* Ensures responsiveness on small screens */
-}
+// Import Bootstrap variables
+@import "config/spacing";
+@import "config/colors";
+@import "config/fonts";
+@import "config/bootstrap_variables";
 
+// Responsive Chart Items (Handled by Bootstrap Grid)
 .chart-item {
-  flex: 1;
-  min-width: 300px;
-  max-width: 600px;
   text-align: center;
 }
 
+// Ensure Canvas Stays Responsive
 canvas {
   width: 100% !important;
-  height: 400px !important;
-  max-height: 500px !important;
+  height: auto !important;
+}
+
+.card {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.chart-text {
+  font-family: $font-family-base;
 }
