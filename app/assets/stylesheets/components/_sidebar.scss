@@ -154,16 +154,31 @@ $sidebar-background-accent: #F4F4F5;
   background-color: #FAFAFA ;
 }
 
-/* Keep mobile adjustments */
-@media (max-width: 768px) {
+.without-navbar .header {
+  display: none;
+}
 
-  .with-navbar .devise-container {
-    overflow-y: auto;
+@media (min-width: 769px) {
+  .header {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: fixed;          /* Overlay main content */
+    top: 0;
+    left: -256px;             /* Hidden off-canvas by default */
+    width: 256px;
+    height: 100vh;
+    background-color: #FAFAFA;
+    transition: left 0.3s ease; /* Smooth slide-in/out animation */
+    z-index: 1000;            /* Make sure it appears above other elements */
+    overflow-y: auto;         /* Enable scrolling if content overflows */
   }
 
-  .without-navbar {
-    margin-left: 0;
-    overflow-y: auto;
+  .sidebar-container.open {
+    left: 0;                  /* Slide in from the left */
   }
 
 }
