@@ -15,9 +15,16 @@ export default class extends Controller {
      this.fullResultTarget.classList.remove("d-none");
 
      // Insert the user input and a loader
-     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="box">
-                                                               <p><strong>My input:</strong></p>
-                                                               <p>${this.formTarget.querySelector("textarea").value}</p>
+     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="d-flex justify-content-end">
+                                                                <div class="user-input p-3">
+                                                                  <div class="d-flex align-items-center">
+                                                                    <img width="24px" src="/assets/user.svg">
+                                                                    <h3>Input</h3>
+                                                                  </div>
+                                                                  <p>${this.formTarget.querySelector("textarea").value}</p>
+                                                                </div>
+                                                              </div>
+                                                              <div class="box my-4">
                                                                <div class="loader1"></div>
                                                              </div>`);
 

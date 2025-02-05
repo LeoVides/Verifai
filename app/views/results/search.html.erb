@@ -1,5 +1,5 @@
 <%= render "/shared/top_bar", image: "telescope.svg", pageTitle: "Fact check" %>
-<div data-controller="result" class="search d-flex flex-column justify-content-between">
+<div data-controller="result" class="search d-flex flex-column justify-content-between container result-container my-4">
   <%= turbo_stream_from dom_id(current_user) %>
   <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">
     <!-- This section will show the loading spinner and be replaced by the final result -->
@@ -20,9 +20,9 @@
             as: :text,
             input_html: {
               class: "form-control input-with-button editor-placeholder",
-              placeholder: "Enter the text to analyze here (50 to 5000 characters)",
+              placeholder: "Paste your news article here",
               id: "fact-check-input",
-              rows: 5,
+              rows: 4,
               data: {
                 controller: "char-counter",
                 action: "input->char-counter#count",
@@ -47,12 +47,11 @@
       </div>
 
       <!-- Character Counter -->
-      <p>
+      <p class="muted char-counter ms-1">
         <span id="char-count">0</span> / 5000 characters
         <i id="char-count-icn" class="fa-solid fa-check d-none"></i>
       </p>
 
     <% end %>
   </div>
-
 </div>

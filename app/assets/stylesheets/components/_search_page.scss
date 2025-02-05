@@ -9,9 +9,10 @@
   font-size: 24px
 }
 
-.result-container h6 {
+.result-container h3     {
   margin-top: 0rem;
   margin-bottom: 0rem;
+  margin-left: $spacing-6;
 }
 
 .result-container .muted {
@@ -21,13 +22,13 @@
 .result-container .user-input {
   background-color: #f4f4f5;
   width: 60%;
+  border-radius: 12px 0 12px 12px;
 }
 
-.result-container .search .layout {
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+@media (max-width: 1250px) {
+  .result-container .user-input {
+    width: 100%;
+  }
 }
 
 .result-container .political-bias {
@@ -52,4 +53,21 @@
 .result-container .summary {
   margin-top: 16px;
   margin-bottom: 20px
+}
+
+.result-container {
+  min-height: 50vh !important;
+}
+
+.result-container .char-counter {
+  font-size: 14px;
+}
+
+.result-container .other-sources p {
+  font-size: 14px;
+}
+
+.result-container .other-sources li::marker {
+  color: #71717A;
+  
 }
