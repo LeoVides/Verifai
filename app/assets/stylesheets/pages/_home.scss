@@ -179,24 +179,32 @@ html, body {
 #attributesContainer {
   display: flex;
   justify-content: center;
-  gap: 3vw; /* Ensures space between cards */
-  margin-top: 16vh; /* Adds space above the container */
+  flex-wrap: wrap; /* Ensures responsiveness */
+  gap: 2vw; /* Keeps space between cards */
+  margin-top: 16vh; /* Adjusts spacing for better visibility */
+  max-width: 95vw;
+  padding-bottom: 1vh;
   opacity: 0;
 }
 
 .attribute-card {
   display: flex;
-  flex-direction: column; /* Aligns items vertically */
+  flex-direction: column; /* Align items vertically */
   align-items: center; /* Centers items horizontally */
-  justify-content: center; /* Centers content */
+  justify-content: center; /* Distribute content vertically */
   background: #ffffff;
-  padding: clamp(2vw, 3vw, 4vw);
-  border-radius: 0.8vw;
+  padding: clamp(0.1vw, 0.2vw, 0.3vw); /* Added padding for better spacing */
+  border-radius: 0.6vw;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  width: 16vw; /* Defines a fixed width */
-  height: 17vh; /* Defines a fixed height */
+  width: clamp(12vw, 16vw, 18vw); /* Responsive width */
+  height: clamp(13vh, 16vh, 18vh); /* Responsive height */
+  min-width: 140px;
+  min-height: 140px;
+  max-width: 250px;
+  max-height: 160px;
   text-align: center;
   transition: transform 0.3s ease-in-out;
+  position: relative;
 }
 
 .attribute-card:hover {
@@ -204,16 +212,17 @@ html, body {
 }
 
 .attribute-card i {
-  font-size: 2.5vw; /* Ensures the icons are large but not overwhelming */
+  font-size: clamp(20px, 2.2vw, 30px); /* Slightly smaller icons */
   color: #09263e;
-  margin-bottom: 1.2vh; /* Adds space between the icon and text */
+  margin-bottom: 1vh; /* Consistent space below the icon */
 }
 
 .attribute-card p {
-  margin: 0.5vh 0; /* Adds space between text lines */
-  font-size: 1.5vw; /* Makes the title slightly bigger */
+  font-size: clamp(14px, 1.3vw, 24px); /* Smaller text */
   color: #1a1a1a;
-  display: block; /* Ensures the text stays on its own line */
+  width: 80%; /* Ensures consistent text wrapping */
+  text-align: center;
+  margin-top: 1vh; /* Small margin for spacing between text and icon */
 }
 
 /* Fade-in Animation */

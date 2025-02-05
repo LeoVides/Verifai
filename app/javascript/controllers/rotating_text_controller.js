@@ -8,7 +8,7 @@ export default class extends Controller {
     this.phrases = [
       {
         content: `
-          <span class="greeting-line">IS THE EARTH FLAT?</span>
+          <span class="greeting-line">IS OUR EARTH FLAT?</span>
         `,
         duration: 2000
       },
@@ -21,7 +21,6 @@ export default class extends Controller {
       {
         content: `
           <span class="greeting-line">FIND THE TRUTH</span>
-          <span class="greeting-line">–</span>
           <span class="greeting-line">WITH VERIFAI</span>
         `,
         duration: 2000
