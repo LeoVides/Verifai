@@ -26,7 +26,7 @@
         <h2>Political bias</h2>
         <p class="muted">The specific ideology or party this news favors</p>
         <div class="text-center position-relative d-flex justify-content-center">
-          <h2 class="political-bias position-absolute"><strong><%= result.political_bias %></strong></h2>
+          <h2 class="political-bias position-absolute"><b><%= result.political_bias %></b></h2>
           <%= image_tag("#{result.political_bias.downcase.gsub("-","_")}.svg", width: "60%", class:"p-2") %>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <h2>Credibility</h2>
         <p class="muted">Accuracy and reliability of this news</p>
         <div class="mt-auto">
-          <h2><strong><%= result.fact_score %></strong></h2>
+          <h2><b><%= result.fact_score %></b></h2>
           <div class="progress custom-progress">
             <% fact_score_value = 0 %>
             <% case result.fact_score.downcase %>
