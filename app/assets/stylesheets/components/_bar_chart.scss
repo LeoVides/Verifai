@@ -23,3 +23,12 @@ canvas {
 .chart-text {
   font-family: $font-family-base;
 }
+
+.fixed-text {
+  min-height: 60px; /* Ensures both text blocks are the same height */
+  max-height: 60px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+}
