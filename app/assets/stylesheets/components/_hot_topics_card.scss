@@ -70,7 +70,7 @@
 .table-row-group {
   display: flex;
   width: 100%;
-  align-items: stretch;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -156,7 +156,7 @@
   padding: 16px;
 }
 
-.container {
+.hot-topics-container {
   justify-content: stretch;
   max-width: none !important;
   width: 100% !important;
