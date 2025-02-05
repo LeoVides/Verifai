@@ -57,7 +57,6 @@
 .editor-placeholder {
   background-color: white;
   text-overflow: ellipsis;
-  white-space: nowrap;
   border: none;
   overflow: auto;
   outline: none;
@@ -83,19 +82,25 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+#speech_button:hover {
+  background-color: #F4F4F5 ;
+  border-radius: 6px;
+}
+
 @media (max-width: 991px) {
   .editor-footer {
     max-width: 100%;
   }
 }
-.editor-footer img {
-  aspect-ratio: 2;
-  object-fit: contain;
-  object-position: center;
-  width: 80px;
-  align-self: stretch;
-  margin: auto 0;
-}
+// .editor-footer img {
+//   aspect-ratio: 2;
+//   object-fit: contain;
+//   object-position: center;
+//   width: 80px;
+//   align-self: stretch;
+//   margin: auto 0;
+// }
 .editor-button {
   border-radius: 6px;
   background-color: rgba(24, 24, 27, 1);

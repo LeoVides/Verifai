@@ -15,7 +15,7 @@
       <label for="fact-check-input" class="visually-hidden">What would you like to fact-check today?</label>
 
       <!-- Fact Check Editor Container -->
-      <div class="fact-check-editor">
+      <div class="fact-check-editor" data-controller="search-input" data-action="input->search-input#count input->search-input#adjustHeight">
         <%= f.input :user_input, label: false,
             as: :text,
             input_html: {
@@ -24,19 +24,16 @@
               id: "fact-check-input",
               rows: 4,
               data: {
-                controller: "char-counter",
-                action: "input->char-counter#count",
-                char_counter_target: "input"
+                search_input_target: "input"
               }
             }
           %>
 
         <!-- Footer with Images & Submit Button -->
         <div class="editor-footer">
-          <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/0d1388ab8f384bb9b1f1f3cdba44a44c/22ffa446369ece0ff970ebf691e0fab85eb4189fe73bf59a45792bca2c6cefc9?apiKey=0d1388ab8f384bb9b1f1f3cdba44a44c&"
-              alt="First fact check related image" />
-
+          <a id="speech_button" type="button" data-action="click->search-input#startSpeech" data-search-input-target="speechButton">
+            <%= image_tag("speech_button.svg", width: "40px") %>
+          </a>
           <!-- Custom Button for Submission -->
           <button type="submit" class="editor-button" data-result-target="button">
             <img loading="lazy"

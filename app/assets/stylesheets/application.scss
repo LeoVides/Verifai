@@ -53,3 +53,11 @@ p {
   line-height: $font-line-height-xl;
   color: $text-base;
 }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #FAFAFA;
+  padding: 8px;
+  overflow-y: auto;
+}

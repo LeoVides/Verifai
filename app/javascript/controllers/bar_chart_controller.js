@@ -70,11 +70,15 @@ export default class extends Controller {
             color: "#18181B",
             font: {size: 14 },
             formatter: (value) => value,
-            clip: false
+            clip: false,
+            overflow: "fit"
           }
         },
         scales: {
-          x: { display: false },
+          x: {
+            display: false,
+            suggestedMax: Math.max(...data) * 1.1
+           },
           y: {
             ticks: {
               color: "#18181B",

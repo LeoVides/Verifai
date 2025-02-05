@@ -134,10 +134,11 @@ $sidebar-background-accent: #F4F4F5;
 
 /* When navbar is present */
 .with-navbar .main-content {
-  padding: 20px;
-  max-width: calc(100% - 200px); /* Adjust width based on navbar */
-  height: 100vh;
-  overflow-y: auto;
+  padding: 16px;
+  background-color: $background-base;
+  min-height: 100vh;
+  border-radius: 12px;
+  box-shadow: $shadow-base;
 }
 
 .with-navbar .devise-container {
@@ -150,7 +151,7 @@ $sidebar-background-accent: #F4F4F5;
   margin-left: 0; /* Reset left margin */
   padding: 20px; /* Keep padding */
   min-width: 100%; /* Make it take full width */
-  overflow-y: auto;
+  background-color: #FAFAFA ;
 }
 
 /* Keep mobile adjustments */

@@ -59,13 +59,21 @@
           <% end %>
           <!-- Badge system -->
           <div class="position-absolute bottom-0 end-0">
-            <% if current_user.checker_score >= 30 %>
-              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: gold;"></i>
-            <% elsif current_user.checker_score >= 15 %>
-              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: silver;"></i>
-            <% elsif current_user.checker_score >= 5 %>
-              <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: #cd8031;"></i>
-            <% end %>
+            <% badge_color = case current_user.checker_score
+              when 0..99 then "#d1d5db"  # Light Gray
+              when 100..249 then "#cd7f32"  # Bronze
+              when 250..499 then "#b87333"  # Dark Bronze
+              when 500..999 then "#b87333"  # Copper
+              when 1_000..1_999 then "#c0c0c0"  # Silver
+              when 2_000..3_999 then "#a8a8a8"  # Dark Silver
+              when 4_000..6_999 then "#ffd700"  # Gold
+              when 7_000..9_999 then "#caa400"  # Dark Gold
+              when 10_000..14_999 then "#e5e4e2"  # Platinum
+              else "#00ffff"  # Diamond
+              end %>
+
+
+            <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: <%= badge_color %>;"></i>
           </div>
           <!-- Badge system end -->
         </div>

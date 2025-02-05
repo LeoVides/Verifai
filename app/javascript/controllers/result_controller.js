@@ -4,6 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fullResult", "form", "button"]
 
+  
+
   // Shows the full result
   compute(event) {
     event.preventDefault();
