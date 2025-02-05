@@ -6,6 +6,11 @@ export default class extends Controller {
 
   connect() {
     this.assetPath = this.element.dataset.assetsPath
+    this.formTarget.addEventListener('submit', this.preventSubmit);
+  }
+
+  preventSubmit(event) {
+    event.preventDefault(); // Prevent the form from being submitted
   }
 
   // Shows the full result
@@ -17,6 +22,11 @@ export default class extends Controller {
 
      // Show the full result target
      this.fullResultTarget.classList.remove("d-none");
+
+     if (this.formTarget.querySelector("textarea").value.length < 50) {
+      this.formTarget.insertAdjacentHTML('afterend', `<div class="alert alert-danger alert-dismissible fade show m-1" role="alert" data-controller="flash" data-flash-target="message">Your input must contain at least 50 characters. Please try again.</div>`);
+      return;
+     }
 
      // Insert the user input and a loader
      const userImagePath = this.assetPath;
