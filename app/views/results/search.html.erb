@@ -1,5 +1,5 @@
 <%= render "/shared/top_bar", image: "telescope.svg", pageTitle: "Fact check" %>
-<div data-controller="result" class="search d-flex flex-column justify-content-between container result-container my-4">
+<div data-controller="result" data-assets-path="<%= asset_path('user.svg') %>" class="search d-flex flex-column justify-content-between container result-container my-4">
   <%= turbo_stream_from dom_id(current_user) %>
   <div data-result-target = "fullResult" id="<%= dom_id(current_user) %>" class="d-none layout">
     <!-- This section will show the loading spinner and be replaced by the final result -->

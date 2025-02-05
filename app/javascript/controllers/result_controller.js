@@ -4,7 +4,9 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fullResult", "form", "button"]
 
-
+  connect() {
+    this.assetPath = this.element.dataset.assetsPath
+  }
 
   // Shows the full result
   compute(event) {
@@ -17,8 +19,9 @@ export default class extends Controller {
      this.fullResultTarget.classList.remove("d-none");
 
      // Insert the user input and a loader
-     const userImagePath = new URL("/assets/user.svg", import.meta.url).pathname;
-     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="d-flex justify-content-end mb-3">
+     const userImagePath = this.assetPath;
+     console.log(userImagePath);
+     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="d-flex justify-content-end mb-5">
                                                                 <div class="user-input p-3">
                                                                   <div class="d-flex align-items-center">
                                                                     <img width="24px" src="${userImagePath}">
@@ -27,7 +30,7 @@ export default class extends Controller {
                                                                   <p>${this.formTarget.querySelector("textarea").value}</p>
                                                                 </div>
                                                               </div>
-                                                              <div class="box my-4">
+                                                              <div class="box my-5">
                                                                <div class="loader1"></div>
                                                              </div>`);
 
