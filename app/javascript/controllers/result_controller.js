@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["fullResult", "form", "button"]
 
-  
+
 
   // Shows the full result
   compute(event) {
@@ -17,10 +17,11 @@ export default class extends Controller {
      this.fullResultTarget.classList.remove("d-none");
 
      // Insert the user input and a loader
-     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="d-flex justify-content-end">
+     const userImagePath = new URL("/assets/user.svg", import.meta.url).pathname;
+     this.fullResultTarget.insertAdjacentHTML("beforeend", `<div class="d-flex justify-content-end mb-3">
                                                                 <div class="user-input p-3">
                                                                   <div class="d-flex align-items-center">
-                                                                    <img width="24px" src="/assets/user.svg">
+                                                                    <img width="24px" src="${userImagePath}">
                                                                     <h3>Input</h3>
                                                                   </div>
                                                                   <p>${this.formTarget.querySelector("textarea").value}</p>
