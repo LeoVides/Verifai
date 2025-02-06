@@ -7,29 +7,29 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <% unless user_signed_in? %>
-    <div class="top-right-button">
-      <%= link_to "Get Started", new_user_registration_path, class: "btn btn-primary" %>
-    </div>
-  <% end %>
+    <div class="container-homepage">
+      <div class="intro-container">
+        <h1>Unveiling the truth</h1>
+        <p>Verifai is your go-to fact-checking companion,
+        designed to analyze sources, verify claims, and provide instant credibility scores.
+        Stay informed and make data-driven decisions with cutting-edge AI technology.
+        </p>
+      </div>
 
-    <div class="container">
-        <div class="container__item landing-page-container">
-            <div class="content__wrapper">
-                <div class="ellipses-container">
-                    <h2 class="greeting">
-                        <span class="greeting-line">VERIFAI</span>
-                        <span class="greeting-line">–</span>
-                        <span class="greeting-line">THE ULTIMATE FACT-CHECKER</span>
-                    </h2>
-                    <div class="ellipses ellipses__outer--thin">
-                        <div class="ellipses ellipses__orbit"></div>
-                    </div>
-                    <div class="ellipses ellipses__outer--thick"></div>
-                </div>
-                </div>
+
+          <div class="ellipses-container">
+            <h2 class="greeting">
+              <span class="greeting-line">VERIFAI</span>
+              <span class="greeting-line">–</span>
+              <span class="greeting-line">THE ULTIMATE FACT CHECKER</span>
+            </h2>
+            <div class="ellipses ellipses__outer--thin">
+              <div class="ellipses ellipses__orbit"></div>
             </div>
+              <div class="ellipses ellipses__outer--thick"></div>
+          </div>
         </div>
+      </div>
     </div>
 </body>
 </html>

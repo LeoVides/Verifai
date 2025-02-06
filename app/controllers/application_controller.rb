@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   # Allow Devise controllers (sign-up, login) for unauthenticated users
   skip_before_action :authenticate_user!, if: :devise_controller?
 
+  protected
+
+  def after_sign_in_path_for(resource)
+    fact_check_path # Replace with the actual route helper for your fact-check page
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])

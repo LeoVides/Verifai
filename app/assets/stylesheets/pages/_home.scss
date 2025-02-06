@@ -1,9 +1,8 @@
 html, body {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-y: hidden !important;
 }
 
 .top-right-button {
@@ -30,36 +29,29 @@ html, body {
 }
 
 /* Container */
-.container {
+.container-homepage {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  justify-content: space-between;
 }
 
-.container__item {
-  margin: 0 auto 4vh;
+
+.intro-container {
+  width: 40%;
+  margin-left: 3vw;
 }
 
-/* Background */
-.landing-page-container {
-  width: 100%;
-  min-height: 100vh;
-  background-image: url('https://s29.postimg.org/vho8xb2pj/landing_bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
-  overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-  color: #09263e;
-  overflow: visible;
+.intro-container h1 {
+  font-size: 2vw;
+  padding-bottom: 0.75vh;
 }
 
-/* Content Wrapper */
-.content__wrapper {
-  max-width: 80vw;
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  position: relative;
+.intro-container p {
+  font-size: 1vw;
+  line-height: 1.75;
 }
 
 /* Ellipses Container */
