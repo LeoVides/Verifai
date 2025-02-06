@@ -1,5 +1,9 @@
 <%= render "/shared/top_bar", image: "hot_topics.svg", pageTitle: "Hot topics" %>
 <div class="hot-topics-container">
+  <div class="pt-3">
+    <h1>Hot topics</h1>
+    <p class="text-muted">The most searched news articles across Verifai</p>
+  </div>
   <% visible_groups = @groups.first(10).select { |key, values| values.size >= 3 } %>
 
   <div class="hot-topics-card">

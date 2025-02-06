@@ -1,5 +1,9 @@
 <%= render "/shared/top_bar", image: "history.svg", pageTitle: "History" %>
 <div class="container-fluid">
+  <div class="pt-3">
+    <h1>History</h1>
+    <p class="text-muted">All your previous fact-checks</p>
+  </div>
   <div class="d-flex justify-content-end mt-3">
     <%= form_with url: history_path, method: :get, data: { controller: "history-search", action: "input->history-search#submitForm", turbo_frame: "history-results" } do %>
       <div class="input-group">
