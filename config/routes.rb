@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "results/history/:id", to: "results#show", as: "result_history"
   delete "results/history/:id", to: "results#destroy", as: "result"
 
-  get "results", to: "results#search", as: "fact_check"
+  get "results", to: "results#search", as: "results"
   post "results", to: "results#create"
 
   get "results/hot_topics", to: "results#hot_topics"
