@@ -51,7 +51,7 @@
             <% when "very high" %>
               <% fact_score_value = 90 %>
             <% end %>
-            <div class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="<%= fact_score_value %>" aria-valuemin="0" aria-valuemax="100" data-controller="fact-score-bar"></div>
+            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="<%= fact_score_value %>" aria-valuemin="0" aria-valuemax="100" data-controller="fact-score-bar"></div>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
     <ul>
       <% result.medias.each do |media| %>
         <li>
-          <p class="muted"><%= media.political_bias.capitalize %>: <a href="<%= media.url %>" target="_blank"><%= media.url %></a></p>
+          <p class="muted"><%= media.political_bias.capitalize %>:	<a href="<%= media.url %>" target="_blank"><%= media.url %></a></p>
         </li>
       <% end %>
     </ul>

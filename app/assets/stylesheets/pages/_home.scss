@@ -5,13 +5,7 @@ html, body {
   overflow-y: hidden !important;
 }
 
-.top-right-button {
-  position: fixed;
-  top: 2vh;
-  right: 2vw;
-}
-
-.top-right-button .btn {
+.get-started-button {
   background-color: #1a1a1a !important;
   border-color: #1a1a1a !important;
   color: white !important;
@@ -22,7 +16,7 @@ html, body {
   display: inline-block;
 }
 
-.top-right-button .btn:hover {
+.get-started-button :hover {
   background-color: #333333 !important;
   border-color: #333333 !important;
   text-decoration: none;
@@ -31,11 +25,12 @@ html, body {
 /* Container */
 .container-homepage {
   width: 100%;
-  min-height: 100vh;
+  min-height: 96vh;
   display: flex;
   align-items: center;
   margin: 0;
   justify-content: space-between;
+  overflow-x: hidden;
 }
 
 
@@ -48,6 +43,7 @@ html, body {
   font-size: 2vw;
   padding-bottom: 0.75vh;
 }
+
 
 .intro-container p {
   font-size: 1vw;

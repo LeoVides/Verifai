@@ -8,7 +8,7 @@
   <% end %>
 
   <!-- Query -->
-  <p><strong>Query: </strong><%= result.user_input %></p>
+  <p class="truncate-two-lines"><strong>Query: </strong><%= result.user_input %></p>
   <br>
 
   <!-- Check if summary is nil -->
@@ -31,13 +31,24 @@
   <% end %>
 
   <div class="row-card">
-    <h2>Fact score</h2>
+    <h2>Credibility</h2>
 
     <!-- Check if fact_score is nil -->
     <% if result.fact_score.nil? %>
-      <p class="tag">n/a</p>
+      <p class="badge">n/a</p>
     <% else %>
-      <p class="tag"><%= result.fact_score %></p>
+      <% fact_icon = case result.fact_score.downcase.strip  %>
+        <% when "very low" then "low.svg" %>
+        <% when "low" then "low.svg" %>
+        <% when "medium" then "medium.svg" %>
+        <% when "high" then "high.svg" %>
+        <% when "very high" then "high.svg" %>
+        <% else "medium.svg" %>
+      <% end %>
+      <p class="badge fact-text">
+        <%= image_tag(fact_icon, width: "16px", alt: result.fact_score) %>
+        <%= result.fact_score %>
+      </p>
     <% end %>
   </div>
 
@@ -47,10 +58,22 @@
 
     <!-- Check if fact_score  is nil -->
     <% if result.political_bias.nil? %>
-      <p class="tag">n/a</p>
+      <p class="badge">n/a</p>
     <% else %>
-      <p class="tag"><%= result.political_bias  %></p>
+      <% bias_class = case result.political_bias.downcase.strip %>
+      <% when "far-left" %>
+        <% bias_class = "far-left" %>
+      <% when "left" %>
+        <% bias_class = "left" %>
+      <% when "center" %>
+        <% bias_class = "center" %>
+      <% when "right" %>
+        <% bias_class = "right" %>
+      <% when "far-right" %>
+        <% bias_class = "far-right" %>
+      <% end %>
+      <p class="badge <%= bias_class %>"><%= result.political_bias  %></p>
     <% end %>
   </div>
-  <p class="fst-italic"><%= time_ago_in_words(result.created_at) %> ago</p>
+  <p class="fst-italic date"><%= time_ago_in_words(result.created_at) %> ago</p>
 </div>

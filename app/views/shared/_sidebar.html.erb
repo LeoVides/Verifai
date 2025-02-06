@@ -3,12 +3,7 @@
     <%= link_to root_path, class: "menu-button text-decoration-none",
         data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: root_path } do %>
       <div class="media-asset">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/a76fe4ca5a40e5bc45399d5c73164dfee73f5f129c8be58e79d46436bad83e03?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-          alt="Logo"
-          class="img"
-        />
+        <%= image_tag("search_check.svg", alt: "Verifai icon", class: "img") %>
       </div>
       <div class="text-label title">Verifai</div>
     <% end %>
@@ -47,15 +42,15 @@
   </div>
   <div class="footer">
     <% if user_signed_in? %>
-      <%= link_to edit_user_registration_path, class: "avatar-wrapper d-flex align-items-center text-decoration-none",
+      <%= link_to edit_user_registration_path, class: "avatar-wrapper d-flex align-items-center text-decoration-none ps-2",
           data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: edit_user_registration_path } do %>
         <div class="avatar hidden position-relative">
           <% if current_user.profile_picture.attached? %>
             <%= cl_image_tag current_user.profile_picture.key, class: "avatar rounded-circle", alt: "User Avatar" %>
           <% else %>
-            <img src="https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+            <img src="https://github.com/shadcn.png"
                 alt="Placeholder Avatar"
-                style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover; margin-top:3px">
           <% end %>
           <!-- Badge system -->
           <div class="position-absolute bottom-0 end-0">
@@ -73,12 +68,13 @@
               end %>
 
 
-            <i class="fa-solid fa-award fa-lg fa-beat shadow" style="color: <%= badge_color %>;"></i>
+            <i class="fa-solid fa-award fa-lg fa-beat shadow-lg" style="color: <%= badge_color %>;"></i>
           </div>
           <!-- Badge system end -->
         </div>
-        <div class="profile-text text-decoration-none ms-3 hidden">
-          <%= current_user.username.capitalize %>
+        <div class="profile-text text-decoration-none ms-1 hidden">
+          <p class="username"><%= current_user.username.capitalize %></p>
+          <p class="text-muted"><%= current_user.email %></p>
         </div>
       <% end %>
     <% end %>

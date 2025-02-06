@@ -1,62 +1,70 @@
-<div class="devise-container">
-  <% if resource.profile_picture.attached? && resource.profile_picture.key.present? %>
-    <div>
-      <%= cl_image_tag resource.profile_picture.key,
-                      width: 300,
-                      height: 300,
-                      crop: :fill,
-                      gravity: :face,
-                      radius: "max",
-                      alt: "Profile Picture",
-                      class: "profile-avatar" %>
-      <br>
-          <%= link_to remove_profile_picture_path,
-                  data: { turbo_confirm: "Are you sure you want to delete your profile picture?", turbo_method: :delete },
-                  class: "btn btn-danger" do %>
-        <i class="fa-solid fa-trash"></i>
-      <% end %>
+ <div class="d-flex justify-content-center">
+  <div class="form-container">
+    <div class="header-content">
+      <div class="d-flex justify-content-between">
+        <% if resource.profile_picture.attached? && resource.profile_picture.key.present? %>
+          <div>
+            <%= cl_image_tag resource.profile_picture.key,
+                            width: 300,
+                            height: 300,
+                            crop: :fill,
+                            gravity: :face,
+                            radius: "max",
+                            alt: "Profile Picture",
+                            class: "profile-avatar" %>
+            <br>
+                <%= link_to remove_profile_picture_path,
+                        data: { turbo_confirm: "Are you sure you want to delete your profile picture?", turbo_method: :delete },
+                        class: "btn btn-danger" do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+        <% else %>
+          <img src="https://github.com/shadcn.png"
+              alt="Placeholder Avatar"
+              style="width: 100px; height: 100px; border-radius: 8px; margin-bottom: 12px;">
+        <% end %>
+        <div>
+          <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-secondary" %>
+        </div>
+      </div>
+      <h2 class="form-title">Edit <%= resource_name.to_s.humanize %></h2>
+      <p class="form-description">Edit your personal information.</p>
     </div>
-  <% else %>
-    <img src="https://cdn.vectorstock.com/i/500p/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
-         alt="Placeholder Avatar"
-         style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 12px;">
-  <% end %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <%= f.error_notification %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+     <div class="form-content">
+        <div class="form-group">
+          <%= f.input :username, required: true, autofocus: true %>
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :profile_picture, as: :file, label: "Upload Profile Picture" %>
 
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :username, required: true, autofocus: true %>
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :profile_picture, as: :file, label: "Upload Profile Picture" %>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
-
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-    </div>
-
-    <div class="form-actions mb-3">
-      <%= f.button :submit, "Update", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-
-  <div> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger mb-3"%></div>
-
-  <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-secondary mt-3" %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <div class="row">
+            <div class="col-xl-6">
+              <%= f.input :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="col-xl-6">
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          </div>
+          <%= f.button :submit, "Update", class: "btn btn-primary mb-3" %>
+         <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"%>
+        </div>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,54 @@
+// BADGES
+// POLITICAL
+// Backgroubd colours
+$badge-background-far-left: #FECACA;
+$badge-background-left: #FEE2E2;
+$badge-background-center: #F8FAFC;
+$badge-background-right: #DBEAFE;
+$badge-background-far-right: #BFDBFE;
+
+// Text colours
+$badge-foreground-far-left: #7F1D1D;
+$badge-foreground-left: #7F1D1D;
+$badge-foreground-center: #0F172A;
+$badge-foreground-right: #1E3A8A;
+$badge-foreground-far-right: #1E3A8A;
+
+
+.badge {
+  padding: $spacing-4 $spacing-12;
+  background-color: $badge-background-center;
+  border-radius: $radius-circle;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $badge-foreground-center;
+}
+
+.far-left {
+  color: $badge-foreground-far-left !important;
+  background: $badge-background-far-left;
+}
+
+.left {
+  color: $badge-foreground-left !important;
+  background: $badge-background-left;
+}
+
+.center {
+  color: $badge-foreground-center !important;
+  background: $badge-background-center;
+}
+
+.right {
+  color: $badge-foreground-right !important;
+  background: $badge-background-right;
+}
+
+.far-right {
+  color: $badge-foreground-far-right !important;
+  background: $badge-background-far-right;
+}
+
+.fact-text {
+  color: $badge-foreground-center !important;
+}
