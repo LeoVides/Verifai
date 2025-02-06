@@ -48,14 +48,13 @@ html, body {
   background-size: cover;
   background-position: bottom;
   overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
   color: #09263e;
   overflow: visible;
 }
 
 /* Content Wrapper */
 .content__wrapper {
-  max-width: 80vw;
+  max-width: 64vw;
   width: 90%;
   height: 100%;
   margin: 0 auto;
@@ -64,9 +63,9 @@ html, body {
 
 /* Ellipses Container */
 .ellipses-container {
-  top: 4vh;
-  width: 40vw;
-  height: 40vw;
+  top: 6vh;
+  width: 32vw;
+  height: 32vw;
   border-radius: 50%;
   margin: 0 auto;
   position: relative;
@@ -78,21 +77,17 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center; /* Center align the text */
-  font-weight: 400;
-  opacity: 0.9;
 }
 
 .greeting-line {
   display: block; /* Ensure each line is on a new line */
-  font-size: 2vw;
+  font-size: 1.5vw;
   text-transform: uppercase;
   line-height: 1.4;
-  letter-spacing: 2vw;
+  letter-spacing: 1vw;
 }
 
 .greeting-line:first-child {
-  font-size: 2vw; /* Larger size for "Welcome to VERIFAI" */
-  font-weight: bold;
   margin-bottom: 1vw;
 }
 
@@ -138,13 +133,13 @@ html, body {
 }
 
 .ellipses__orbit {
-  width: 6.5vw;
-  height: 6.5vw;
+  width: 5vw;
+  height: 5vw;
   border-width: 2px;
   border-color: #09263e;
   position: absolute;
-  top: 1%;
-  right: 13%;
+  top: 0%;
+  right: 15%;
 
   &:before {
     content: '';
@@ -174,5 +169,74 @@ html, body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.attribute-hidden {
+  display: none;
+}
+
+#attributesContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Ensures responsiveness */
+  gap: 2vw; /* Keeps space between cards */
+  margin-top: 16vh; /* Adjusts spacing for better visibility */
+  max-width: 95vw;
+  padding-bottom: 1vh;
+  opacity: 0;
+}
+
+.attribute-card {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Distribute content vertically */
+  background: #ffffff;
+  padding: clamp(0.1vw, 0.2vw, 0.3vw); /* Added padding for better spacing */
+  border-radius: 0.6vw;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  width: clamp(12vw, 16vw, 18vw); /* Responsive width */
+  height: clamp(13vh, 16vh, 18vh); /* Responsive height */
+  min-width: 140px;
+  min-height: 140px;
+  max-width: 250px;
+  max-height: 160px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.attribute-card:hover {
+  transform: translateY(-4px);
+}
+
+.attribute-card i {
+  font-size: clamp(20px, 2.2vw, 30px); /* Slightly smaller icons */
+  color: #09263e;
+  margin-bottom: 1vh; /* Consistent space below the icon */
+}
+
+.attribute-card p {
+  font-size: clamp(14px, 1.3vw, 24px); /* Smaller text */
+  color: #1a1a1a;
+  width: 80%; /* Ensures consistent text wrapping */
+  text-align: center;
+  margin-top: 1vh; /* Small margin for spacing between text and icon */
+}
+
+/* Fade-in Animation */
+.fade-in {
+  animation: fadeIn 1.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
