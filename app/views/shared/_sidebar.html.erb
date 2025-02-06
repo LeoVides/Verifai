@@ -3,12 +3,7 @@
     <%= link_to root_path, class: "menu-button text-decoration-none",
         data: { sidebar_target: "menuItem", action: "click->sidebar#setActive", path: root_path } do %>
       <div class="media-asset">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/e7215202aad14fd5bc906c5d98e426f9/a76fe4ca5a40e5bc45399d5c73164dfee73f5f129c8be58e79d46436bad83e03?apiKey=e7215202aad14fd5bc906c5d98e426f9&"
-          alt="Logo"
-          class="img"
-        />
+        <%= image_tag("search_check.svg", alt: "Verifai icon", class: "img") %>
       </div>
       <div class="text-label title">Verifai</div>
     <% end %>
