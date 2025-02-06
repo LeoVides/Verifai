@@ -35,7 +35,8 @@
       <% end %>
 
       <!-- Main Content -->
-      <div class="wrapper">
+
+      <div class="<%= (controller_name == 'pages' && action_name == 'home') ? 'wrapper-home' : 'wrapper' %>">
         <div class="main-content flex-grow-1">
           <%= render "shared/flashes" %>
           <%= yield %> <!-- Content of the current page -->
