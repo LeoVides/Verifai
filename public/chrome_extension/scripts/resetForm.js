@@ -1,4 +1,4 @@
-export function resetForm() {
+export function resetForm(form, button) {
   form.reset();
   button.classList.add("disabled");
   setTimeout(() => {

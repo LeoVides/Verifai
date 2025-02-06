@@ -42,6 +42,8 @@ function getResults(userInput) {
   })
     .then(response => response.json())
     .then((data) => {
+      // Reset form after successful submission
+      resetForm(form, button);
       // Update the results section
       results.innerHTML = data.partial;
       // Make sure the SVGs are loaded properly
@@ -50,8 +52,6 @@ function getResults(userInput) {
       removeElements();
       // Update the progress bar with the result
       updateProgressBar();
-      // Reset form after successful submission
-      resetForm();
     })
     .catch(error => {
       console.error('Error fetching results:', error);
