@@ -6,11 +6,11 @@ Chart.register(BarController, BarElement, CategoryScale, LinearScale, Title, Too
 
 // Define custom colors for political bias and credibility scores
 const politicalBiasColors = {
-  "Far-left": "#7F1D1D",
-  "Left": "#FCA5A5",
-  "Center": "#CBD5E1",
-  "Right": "#93C5FD",
-  "Far-right": "#1E3A8A"
+  "Far-left": "#991B1B",
+  "Left": "#991B1B",
+  "Center": "#475569",
+  "Right": "#1E40AF",
+  "Far-right": "#1E40AF"
 };
 
 const credibilityColors = {

@@ -10,6 +10,7 @@ export default class extends Controller {
     setTimeout(() => {
       progressBar.style.transition = "width 1.5s ease-out";
       progressBar.style.width = targetWidth + "%"; // Animate to target width
+      progressBar.style.backgroundColor = "#475569"; // Set color 
     }, 200);
   }
 }
