@@ -12,6 +12,47 @@ const results = document.getElementById('results');
 const button = document.getElementById('send-data');
 const counter = document.getElementById("char-count");
 const checkIcon = document.getElementById("char-count-icn");
+const speechButton = document.getElementById("speech-button");
+
+//SPEECH RECOGNITION
+if ("webkitSpeechRecognition" in window) {
+  const recognition = new webkitSpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = "en-US"; // Change as needed
+
+  recognition.onresult = (event) => {
+    textArea.value = event.results[0][0].transcript; // Fill input with recognized speech
+    updateCounter(textArea, counter, checkIcon); // Update character counter
+    speechButton.classList.remove("fa-beat-fade");
+  };
+
+  recognition.onerror = (event) => {
+    console.error("Speech recognition error:", event.error);
+  };
+
+  // Event listener for speech button
+  speechButton.addEventListener("click", async () => {
+    console.log("Requesting microphone access...");
+    try {
+      // Request microphone access from the user
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      console.log("Microphone access granted. Starting speech recognition...");
+      speechButton.classList.add("fa-beat-fade");
+      recognition.start();
+    } catch (error) {
+      console.error("Microphone access denied:", error);
+      alert("Microphone access is blocked. Please allow it in Chrome settings.");
+    }
+    // speechButton.classList.add("fa-beat-fade"); // Add animation if needed
+    // recognition.start();
+  });
+} else {
+  alert("Speech recognition is not supported in this browser.");
+}
+
+
 
 
 
