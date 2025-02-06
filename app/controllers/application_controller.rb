@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    fact_check_path # Replace with the actual route helper for your fact-check page
+    results_path # Replace with the actual route helper for your fact-check page
   end
 
   def configure_permitted_parameters
