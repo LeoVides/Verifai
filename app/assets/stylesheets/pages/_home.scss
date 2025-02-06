@@ -10,11 +10,15 @@ html, body {
   background-color: #1a1a1a !important;
   border-color: #1a1a1a !important;
   color: white !important;
-  padding: 1.5vh 2vw;
+  padding: 0.8vh 2vw;
   font-size: 1.2vw;
   border-radius: 0.5vw;
   text-decoration: none;
+  text-align: center;
+  align-items: center;
   display: inline-block;
+  width: 12vw; /* Width as a percentage of the viewport width */
+  margin-top: 0.5vh;
 }
 
 .get-started-button :hover {
@@ -61,6 +65,37 @@ html, body {
   position: relative;
 }
 
+@media screen and (max-width: 1220px) {
+  .container-homepage {
+    margin-top: 4vh;
+    flex-direction:column-reverse;  /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-end; /* Center items vertically */
+  }
+  .intro-container {
+    width: 80%;
+    margin-top: 6vh;
+  }
+  .intro-container h1 {
+    font-size: 20px;
+    padding-bottom: 3px;
+  }
+  .intro-container p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .get-started-button {
+    padding: 0.8vh 2vw;
+    font-size: 12px;
+    border-radius: 0.5vw;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    width: 150px; /* Width as a percentage of the viewport width */
+    margin-top: 0.5vh;
+  }
+}
 .greeting {
   position: absolute;
   top: 50%;
