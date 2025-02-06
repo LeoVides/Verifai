@@ -13,7 +13,7 @@ class OpenAiCallJob < ApplicationJob
         Return the political_bias of the text (choose  only one between: Far-left, Left, Center, Right, Far-right),
         the fact_score (choose only one between: Very low, Low, Medium, High, Very high),
         a title summarizing the key point of the news excerpt (maximum 5 words),
-        a link to the homepage of news outlets of opposite political biases (maximum 3, called 'source')
+        a link to the homepage of news outlets of opposite political biases and excluding 'far-right' and 'far-left' (maximum 3, called 'source')
         and an explanation of the political bias and credibility results (maximum 60 words).
         Provide your response in JSON format with keys 'political_bias’, 'fact_score', 'title', 'source'
         (source is a hash itself with the 3 links) and 'summary',
