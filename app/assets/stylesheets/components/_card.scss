@@ -29,22 +29,21 @@
 
 .card-saved p {
   font-size: 14px;
-  color: #59636e;
   margin-bottom: 0px;
-}
-
-.card-saved .tag {
-  font-size: 14px;
-  color: #262626;
-  background-color: #F6F8FA;
-  padding: 2px 4px;
-  border-radius: 2px;
+  color: $text-muted;
 }
 
 .truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.truncate-two-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-container {
@@ -64,4 +63,9 @@
 
 .card-container:hover .card {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.date {
+  color: $text-muted !important;
+  font-size: $font-size-xs !important;
 }
