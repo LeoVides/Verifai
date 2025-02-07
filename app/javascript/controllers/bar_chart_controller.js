@@ -21,6 +21,12 @@ const credibilityColors = {
   "Very low": "#CBD5E1"
 };
 
+// Define the desired order of labels for political bias and credibility
+const desiredOrder = [
+  "Far-left", "Left", "Center", "Right", "Far-right", // Political bias
+  "Very high", "High", "Medium", "Low", "Very low"   // Credibility scores
+];
+
 export default class extends Controller {
   connect() {
     // Ensure we don't duplicate charts
@@ -31,21 +37,27 @@ export default class extends Controller {
     const chartData = JSON.parse(this.element.dataset.chart);
     const chartLabel = this.element.dataset.chartLabel || "Distribution";
 
-    const labels = Object.keys(chartData);
-    const data = Object.values(chartData);
+    // Sort the data based on the desired order while keeping others intact
+    const sortedLabels = desiredOrder.filter(label => chartData.hasOwnProperty(label))
+      .concat(
+        Object.keys(chartData).filter(label => !desiredOrder.includes(label)) // Add remaining labels
+      );
 
-    const backgroundColors = labels.map(label => {
+    const sortedData = sortedLabels.map(label => chartData[label]);
+
+    // Map colors for both political bias and credibility
+    const backgroundColors = sortedLabels.map(label => {
       return politicalBiasColors[label] || credibilityColors[label] || "#999999"; // Default gray if unknown
     });
 
     const config = {
       type: "bar",
       data: {
-        labels: labels,
+        labels: sortedLabels, // Use sorted labels
         datasets: [
           {
             label: chartLabel,
-            data: data,
+            data: sortedData, // Use sorted data
             backgroundColor: backgroundColors,
             borderWidth: 1,
             borderRadius: 10,
@@ -53,7 +65,7 @@ export default class extends Controller {
         ]
       },
       options: {
-        indexAxis: 'y',
+        indexAxis: 'y', // Horizontal bar chart
         responsive: true,
         layout: {
           padding: {
@@ -68,7 +80,7 @@ export default class extends Controller {
             anchor: "end",
             align: "end",
             color: "#18181B",
-            font: {size: 14 },
+            font: { size: 14 },
             formatter: (value) => value,
             clip: false,
             overflow: "fit"
@@ -77,12 +89,12 @@ export default class extends Controller {
         scales: {
           x: {
             display: false,
-            suggestedMax: Math.max(...data) * 1.1
-           },
+            suggestedMax: Math.max(...sortedData) * 1.1 // Adjust maximum based on sorted data
+          },
           y: {
             ticks: {
               color: "#18181B",
-              font: {size: 14 }
+              font: { size: 14 }
             },
             grid: {
               display: false // Removes the grid lines on the y-axis
